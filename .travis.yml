@@ -1,6 +1,4 @@
 deploy:
-  before_install: 
-    - npm install node
   provider: heroku
   language: node_js
     api_key:
