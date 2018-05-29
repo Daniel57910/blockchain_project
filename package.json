@@ -1,0 +1,19 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "sample json file for final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel57910/blockhain_project.git"
+  },
+  "author": "Daniel Miller, Sam Nieichial, Patrick Pilecki, Gadiza Zerari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel57910/blockhain_project/issues"
+  },
+  "homepage": "https://github.com/Daniel57910/blockhain_project#readme"
+}
