@@ -1,12 +1,13 @@
-let Block = require('../lib/block.js');
+let Block = require('../lib/blockChain.js');
 console.log(Block);
 
 describe('block creation', function() {
- 
+
   beforeEach(function() {
     jasmine.clock().install();
     testBlock = new Block.Block("KIM");
     baseTime = new Date();
+    chain = new Block.Chain();
     jasmine.clock().mockDate(baseTime);
   });
 
@@ -17,9 +18,8 @@ describe('block creation', function() {
   it('returns the correct data assigned to the block', function() {
     expect(testBlock.vote).toEqual("KIM");
   });
-  
+
   it("adds the current date as the timestamp", function() {
-    jasmine.clock().tick(50);
     expect(testBlock.timestamp.getTime()).toEqual(baseTime.getTime());
   });
 
@@ -30,9 +30,11 @@ describe('block creation', function() {
      newBlock = new Block.Block("KIM");
      newBlock.index = sampleChain[sampleChain.length - 1].index + 1;
      expect(newBlock.index).toEqual(testBlock.index + 1);
-  }); 
-
-  
-
+  });
+  it("assign previous hash to the new block", function(){
+    chain.addBlock(testBlock)
+    chain.addBlock(new Block.Block("Putin"));
+    expect(chain.chain[2].previousHash).toEqual(testBlock.hash)
+  })
 
 });
