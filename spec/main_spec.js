@@ -5,5 +5,7 @@ describe('block creation', function() {
   beforeEach(function() {
     testBlock = new Block.Block();
   });
-  it('returns ')
+  it('returns the correct data assigned to the block', function() {
+
+  });
 });
