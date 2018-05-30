@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Daniel57910/blockhain_project/issues"
   },
-  "homepage": "https://github.com/Daniel57910/blockhain_project#readme"
+  "homepage": "https://github.com/Daniel57910/blockhain_project#readme",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "jasmine": "^3.1.0"
+  }
 }
