@@ -6,7 +6,7 @@ describe('block creation', function() {
 
   beforeEach(function() {
     jasmine.clock().install();
-    testBlock = new Block.Block("KIM");
+    testBlock = new Block.Block("Sam", "Daniel", "Morphine");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
     chain = new Chain.Chain();
   });
@@ -15,8 +15,16 @@ describe('block creation', function() {
     jasmine.clock().uninstall();
   });
 
-  it('returns the correct data assigned to the block', function() {
-    expect(testBlock.vote).toEqual("KIM");
+  it('returns the correct name of the patient', function() {
+    expect(testBlock.patientName).toEqual("Sam");
+  });
+
+  it('returns the correct name of the doctor', function () {
+    expect(testBlock.doctorName).toEqual("Daniel");
+  });
+
+  it('returns the correct prescription', function () {
+    expect(testBlock.prescription).toEqual("Morphine");
   });
 
   it("adds the current date as the timestamp", function() {
@@ -31,9 +39,10 @@ describe('block creation', function() {
      newBlock.index = sampleChain[sampleChain.length - 1].index + 1;
      expect(newBlock.index).toEqual(testBlock.index + 1);
   });
+
   it("assign previous hash to the new block", function(){
     chain.addBlock(testBlock);
-    chain.addBlock(new Block.Block("Putin"));
+    chain.addBlock(new Block.Block("Daniel,", "Sam", "Valium"));
     expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
   });
 
