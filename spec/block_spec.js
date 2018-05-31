@@ -1,4 +1,5 @@
-let Block = require('../lib/blockChain.js');
+let Block = require('../lib/block.js');
+let Chain = require("../lib/blockChain.js");
 const DATEFORMAT = require("dateformat");
 console.log(Block);
 
@@ -8,7 +9,7 @@ describe('block creation', function() {
     jasmine.clock().install();
     testBlock = new Block.Block("KIM");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
-    chain = new Block.Chain();
+    chain = new Chain.Chain();
   });
 
   afterEach(function () {
