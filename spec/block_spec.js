@@ -1,7 +1,6 @@
 let Block = require('../lib/block.js');
 let Chain = require("../lib/blockChain.js");
 const DATEFORMAT = require("dateformat");
-console.log(Block);
 
 describe('block creation', function() {
 
