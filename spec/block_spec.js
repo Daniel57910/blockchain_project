@@ -1,4 +1,5 @@
 let Block = require('../lib/blockChain.js');
+const DATEFORMAT = require("dateformat");
 console.log(Block);
 
 describe('block creation', function() {
@@ -6,9 +7,8 @@ describe('block creation', function() {
   beforeEach(function() {
     jasmine.clock().install();
     testBlock = new Block.Block("KIM");
-    baseTime = new Date();
+    baseTime = DATEFORMAT(new Date(), "isoDateTime");
     chain = new Block.Chain();
-    jasmine.clock().mockDate(baseTime);
   });
 
   afterEach(function () {
@@ -20,7 +20,7 @@ describe('block creation', function() {
   });
 
   it("adds the current date as the timestamp", function() {
-    expect(testBlock.timestamp.getTime()).toEqual(baseTime.getTime());
+    expect(testBlock.timestamp).toEqual(baseTime);
   });
 
   it("sets the index to 1 by default, then increments the index by 1 for every new chain", function() {
@@ -32,9 +32,9 @@ describe('block creation', function() {
      expect(newBlock.index).toEqual(testBlock.index + 1);
   });
   it("assign previous hash to the new block", function(){
-    chain.addBlock(testBlock)
+    chain.addBlock(testBlock);
     chain.addBlock(new Block.Block("Putin"));
-    expect(chain.chain[2].previousHash).toEqual(testBlock.hash)
-  })
+    expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
+  });
 
 });
