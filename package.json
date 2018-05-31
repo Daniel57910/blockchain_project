@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Daniel57910/blockhain_project.git"
+    "url": "git+https://github.com/Daniel57910/blockchain_project.git"
   },
   "author": "Daniel Miller, Sam Nieichial, Patrick Pilecki, Gadiza Zerari",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Daniel57910/blockhain_project/issues"
   },
-  "homepage": "https://github.com/Daniel57910/blockhain_project#readme",
+  "homepage": "https://github.com/Daniel57910/blockchain_project#readme",
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "dateformat": "^3.0.3",
