@@ -4,10 +4,10 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src = "main.js"></script>
-  <script src = "tst.js"></script>
-  <script src = "block.js"></script>
+  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+
+
+
 </head>
 <body>
   <br>
@@ -21,7 +21,7 @@
   <ul>
 
 
-  <form class="form-horizontal" action="/action_page.php">
+  <form class="form-horizontal"  method="post" action="/info">
   <div class="form-group">
     <label class="control-label col-sm-2" for="doctorName">Doctor's Name:</label>
     <div class="col-sm-10">
@@ -43,7 +43,7 @@
   <br>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Submit Prescription</button>
+      <button type="submit" method="post" action='/info' class="btn btn-default">Submit Prescription</button>
     </div>
   </div>
 </form>
