@@ -18,7 +18,7 @@ describe('block integrity', function() {
     jasmine.clock().uninstall();
   });
 
-  it ('returns true if chain integrity is complete', function() {
-    expect(chain.integrityChecker).toBe(true);
+  it ('returns true if chain is valid', function() {
+    expect(chain.integrityChecker()).toBe(true);
   });
 });
