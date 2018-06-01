@@ -1,5 +1,6 @@
 let Block = require('../lib/block.js');
 let Chain = require("../lib/blockChain.js");
+console.log(Chain);
 
 describe('chain creation', function () {
   beforeEach(function() {

@@ -40,4 +40,10 @@ describe('block creation', function() {
     newBlock.index = sampleChain[sampleChain.length - 1].index + 1;
     expect(newBlock.index).toEqual(testBlock.index + 1);
   });
+
+  it("assign previous hash to the new block", function(){
+    chain.addBlock(testBlock);
+    chain.addBlock(new Block.Block("Daniel,", "Sam", "Valium"));
+    expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
+  });
 });
