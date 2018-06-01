@@ -12,7 +12,7 @@ describe('block creation', function() {
     chain = new Chain.Chain();
   });
 
-  afterEach(function () {
+  afterEach(function() {
     jasmine.clock().uninstall();
   });
 
@@ -33,18 +33,11 @@ describe('block creation', function() {
   });
 
   it("sets the index to 1 by default, then increments the index by 1 for every new chain", function() {
-     expect(testBlock.index).toEqual(1);
-     sampleChain = [];
-     sampleChain.push(testBlock);
-     newBlock = new Block.Block("KIM");
-     newBlock.index = sampleChain[sampleChain.length - 1].index + 1;
-     expect(newBlock.index).toEqual(testBlock.index + 1);
+    expect(testBlock.index).toEqual(1);
+    sampleChain = [];
+    sampleChain.push(testBlock);
+    newBlock = new Block.Block("KIM");
+    newBlock.index = sampleChain[sampleChain.length - 1].index + 1;
+    expect(newBlock.index).toEqual(testBlock.index + 1);
   });
-
-  it("assign previous hash to the new block", function(){
-    chain.addBlock(testBlock);
-    chain.addBlock(new Block.Block("Daniel,", "Sam", "Valium"));
-    expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
-  });
-
 });
