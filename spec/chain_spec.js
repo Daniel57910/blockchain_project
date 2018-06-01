@@ -12,11 +12,11 @@ describe('chain creation', function () {
   });
   it('adds a block', function() {
     chain.addBlock(block);
-    expect(chain.chain[1]).toEqual(block)
-  })
+    expect(chain.chain[1]).toEqual(block);
+  }); 
   it('finds the last block', function() {
     chain.addBlock(block);
     expect(chain.findLastBlock()).toEqual(block);
-  })
+  });
 
 });
