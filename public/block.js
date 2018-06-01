@@ -1,6 +1,7 @@
 const ENCRYPT = require('crypto-js/sha512');
 const DATEFORMAT = require("dateformat");
-//
+
+(function (exports) {
 class Block {
   constructor(patientName, doctorName, prescription, previousHash = "") {
     this.index = 1;
@@ -23,3 +24,6 @@ class Block {
 }
 
 exports.Block = Block;
+exports.productionBlock = new Block();
+
+})(this);
