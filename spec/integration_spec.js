@@ -22,13 +22,11 @@ describe('block integrity', function() {
     expect(chain.integrityChecker()).toBe(true);
   });
 
-  it('returns false if chain is invalid', function() {
+  it('throws error if chain is invalid', function() {
     testBlock.doctorName = "Patryk";
     testBlock.hash = testBlock.calculateHash();
-    console.log(chain)
-    expect(chain.integrityChecker()).toBe(false);
+    expect(function() {
+      chain.integrityChecker();
+    }).toThrow("Chain is invalid");
   });
-
-  // it('throws error if chain is invalid', function() {
-  // });
 });
