@@ -13,30 +13,34 @@
   <br>
   <br>
 
-<title> Medical Prescription Blockchain Application </title>
+<title> Patient Sign in </title>
 
-  <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Prescription Stored </h1>
+  <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Sign in Patient</h1>
 
   <br>
   <ul>
-    <div class="container">
-      <div class="row">
+
+
   <form class="form-horizontal"  method="post" action="/home">
   <div class="form-group">
+    <label class="control-label col-sm-2" for="userName">User Name:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="userName" placeholder="Enter full name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="password">Password:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="password" placeholder="Enter password">
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="post" action='/home' class="btn btn-default">Other Prescription</button>
+      <button type="submit" method="post" action='/home' class="btn btn-default">Sign In</button>
     </div>
   </div>
 </form>
-  <form class="form-horizontal"  method="post" action="/">
-  <div class="form-group" method="get" action="/">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="post" action='/' class="btn btn-default">Log Out</button>
-    </div>
-  </div>
-</form>
-</div>
-</div>
 </ul>
 </body>
   </html>

@@ -1,4 +1,4 @@
-**Final Project Medical Prescription BlockChain **
+** Final Project Medical Prescription BlockChain **
 ==================================================
 
 Purpose of this project is to learn how a blockchain works and to demonstrate this with a simple web-application
@@ -7,7 +7,7 @@ Repository
 -------
 https://github.com/Daniel57910/blockchain_project
 
-Card Wall:
+Card Wall
 -------
 https://github.com/Daniel57910/blockchain_project/projects/1
 
