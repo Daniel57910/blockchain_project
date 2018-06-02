@@ -15,6 +15,18 @@ app.get('/', function (req, res) {
   console.log(chain);
 });
 
+app.get('/sign-up-patient', function (req, res) {
+  res.render('sign_up_patient');
+});
+
+app.get('/sign-up-doctor', function (req, res) {
+  res.render('sign_up_doctor');
+});
+
+app.get('/sign-up-pharmacist', function (req, res) {
+  res.render('sign_up_pharmacist');
+});
+
 app.post('/info', function(req, res){
   console.log(req.param('prescription'));
   console.log(req.param('patientNames'));
