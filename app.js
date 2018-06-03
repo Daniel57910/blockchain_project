@@ -1,18 +1,17 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var Block = require('./lib/block.js');
+var env = process.env.NODE_ENV || "test";
+var dependencies = require("./dependencies.js");
+var app = dependencies.setupApp();
 var Chain = require("./lib/blockChain.js");
-var bodyParser = require('body-parser');
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.use(express.static(path.join(__dirname, 'public')));
+var Block = require("./lib/block.js");
 var chain = new Chain.Chain();
+
+dependencies.connectToDatabase(env);
+app.set('view engine', 'ejs');
+app.use(dependencies.bodyParser.urlencoded({extended: true}));
+app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   res.render('home');
-  console.log(chain);
 });
 
 app.get('/sign-up-patient', function (req, res) {
