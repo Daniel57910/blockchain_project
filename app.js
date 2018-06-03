@@ -47,7 +47,6 @@ app.get('/sign-up-doctor', function (req, res) {
 });
 
 app.post('/doctor_signed', function (req, res) {
-  console.log(req.body)
   savedDoctor = new doctorSchema({
     fullName: req.body.fullName,
     doctorID: req.body.ID,
