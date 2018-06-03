@@ -6,15 +6,12 @@ class Dependencies {
     this.mongoose = require('mongoose');
     this.path = require('path');
   }
-
   setupApp() {
     return this.express();
   }
-
   connectToDatabase(env) {
     return this.mongoose.connect(databaseSetup(env));
   }
-
 }
 
 function databaseSetup(env) {

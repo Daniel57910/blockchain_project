@@ -17,8 +17,10 @@ app.get('/', function (req, res) {
 app.get('/sign-up-patient', function (req, res) {
   res.render('sign_up_patient');
 });
-app.post('/sign-up-patient', function (req, res) {
-  res.render('sign_up_patient');
+app.post('/hello', function (req, res) {
+  console.log(req.body);
+  console.log(req.body.firstName);
+  res.redirect('/');
 });
 app.get('/sign-in-patient', function (req, res) {
   res.render('sign_in_patient');
