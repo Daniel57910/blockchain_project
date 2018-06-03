@@ -13,13 +13,11 @@ app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public'))
 app.get('/', function (req, res) {
   res.render('home');
 });
-
 app.get('/sign-up-patient', function (req, res) {
   res.render('sign_up_patient');
 });
 app.post('/hello', function (req, res) {
   console.log(req.body);
-  console.log(req.body.firstName);
   res.redirect('/');
 });
 app.get('/sign-in-patient', function (req, res) {
@@ -32,14 +30,9 @@ app.post('/sign-in-patient', function (req, res) {
 app.get('/sign-up-doctor', function (req, res) {
   res.render('sign_up_doctor');
 });
+
 app.post('/sign-up-doctor', function (req, res) {
   res.render('sign_up_doctor');
-});
-app.get('/sign-in-doctor', function (req, res) {
-  res.render('sign_in_doctor');
-});
-app.post('/sign-in-doctor', function (req, res) {
-  res.render('sign_in_doctor');
 });
 
 app.get('/sign-up-pharmacist', function (req, res) {
@@ -47,12 +40,6 @@ app.get('/sign-up-pharmacist', function (req, res) {
 });
 app.post('/sign-up-pharmacist', function (req, res) {
   res.render('sign_up_pharmacist');
-});
-app.get('/sign-in-pharmacist', function (req, res) {
-  res.render('sign_in_pharmacist');
-});
-app.post('/sign-in-pharmacist', function (req, res) {
-  res.render('sign_in_pharmacist');
 });
 
 app.post('/', function (req, res) {
@@ -66,13 +53,8 @@ app.get('/homepage', function (req, res) {
   res.render('index');
 });
 app.post('/info', function(req, res){
-  console.log(req.param('prescription'));
-  console.log(req.param('patientNames'));
-  console.log(req.param('doctorName'));
-  let newBlock = new Block.Block(req.param('patientNames'), req.param('doctorName'), req.param('prescription'));
-  console.log(newBlock);
+  let newBlock = new Block.Block(req.body.patientNames, req.body.doctorName, req.body.prescription);
   chain.addBlock(newBlock);
-  console.log(chain);
   res.render('info');
 });
 
