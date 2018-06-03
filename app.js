@@ -18,7 +18,8 @@ app.get('/', function (req, res) {
 app.get('/sign-up-patient', function (req, res) {
   res.render('sign_up_patient');
 });
-app.post('/hello', function (req, res) {
+
+app.post('/patient_signed', function (req, res) {
   let savedPatient = new patientSchema({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -31,9 +32,11 @@ app.post('/hello', function (req, res) {
   });
   res.redirect('/');
 });
+
 app.get('/sign-in-patient', function (req, res) {
   res.render('sign_in_patient');
 });
+
 app.post('/sign-in-patient', function (req, res) {
   res.render('sign_in_patient');
 });
@@ -63,6 +66,7 @@ app.post('/home', function (req, res) {
 app.get('/homepage', function (req, res) {
   res.render('index');
 });
+
 app.post('/info', function(req, res){
   let newBlock = new Block.Block(req.body.patientNames, req.body.doctorName, req.body.prescription);
   chain.addBlock(newBlock);
