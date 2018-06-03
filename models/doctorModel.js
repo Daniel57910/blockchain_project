@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 
 var doctorSchema = mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  fullName: String,
   doctorID: String,
   password: String
 });

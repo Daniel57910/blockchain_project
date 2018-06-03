@@ -47,6 +47,7 @@ app.get('/sign-up-doctor', function (req, res) {
 });
 
 app.post('/doctor_signed', function (req, res) {
+  console.log(req.body);
   res.redirect('/');
 });
 
