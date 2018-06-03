@@ -47,7 +47,16 @@ app.get('/sign-up-doctor', function (req, res) {
 });
 
 app.post('/doctor_signed', function (req, res) {
-  console.log(req.body);
+  console.log(req.body)
+  savedDoctor = new doctorSchema({
+    fullName: req.body.fullName,
+    doctorID: req.body.ID,
+    password: req.body.password
+  });
+  savedDoctor.save(function(err, res) {
+    if (err) throw "ERR";
+    console.log("SAVED\n" + savedDoctor);
+  });
   res.redirect('/');
 });
 
