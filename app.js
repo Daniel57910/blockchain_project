@@ -4,6 +4,7 @@ var app = dependencies.setupApp();
 var Chain = require("./lib/blockChain.js");
 var Block = require("./lib/block.js");
 var patientSchema = require('./models/patientModel.js');
+var doctorSchema = require('./models/doctorModel.js');
 var chain = new Chain.Chain();
 
 dependencies.connectToDatabase(env);
@@ -26,9 +27,9 @@ app.post('/patient_signed', function (req, res) {
     dob: req.body.dob,
     password: req.body.password
   });
-  savedPatient.save(function(err, res) {
-    if (err) throw "ERROR";
-    console.log("SAVED");
+  savedPatient.save(function(err, res) { 
+    if (err) throw "ERROR"; 
+    console.log("SAVED\n" + savedPatient);
   });
   res.redirect('/');
 });
@@ -45,8 +46,8 @@ app.get('/sign-up-doctor', function (req, res) {
   res.render('sign_up_doctor');
 });
 
-app.post('/sign-up-doctor', function (req, res) {
-  res.render('sign_up_doctor');
+app.post('/doctor_signed', function (req, res) {
+  res.redirect('/');
 });
 
 app.get('/sign-up-pharmacist', function (req, res) {
