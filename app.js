@@ -5,6 +5,7 @@ var Chain = require("./lib/blockChain.js");
 var Block = require("./lib/block.js");
 var patientSchema = require('./models/patientModel.js');
 var doctorSchema = require('./models/doctorModel.js');
+var pharmacistSchema = require('./models/pharmacistModel.js');
 var chain = new Chain.Chain();
 
 dependencies.connectToDatabase(env);
