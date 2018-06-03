@@ -4,8 +4,6 @@ var app = dependencies.setupApp();
 var Chain = require("./lib/blockChain.js");
 var Block = require("./lib/block.js");
 var patientSchema = require('./models/patientModel.js');
-console.log("PATIENT SCHEMA = ||\n");
-console.log(patientSchema);
 var chain = new Chain.Chain();
 
 dependencies.connectToDatabase(env);
@@ -18,11 +16,20 @@ app.get('/', function (req, res) {
 });
 
 app.get('/sign-up-patient', function (req, res) {
-  console.log(req.body);
   res.render('sign_up_patient');
 });
 app.post('/hello', function (req, res) {
-  console.log(req.body);
+  let savedPatient = new patientSchema({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dob: req.body.dob,
+    password: req.body.password
+  });
+  console.log(savedPatient);
+  savedPatient.save(function(err, res) {
+    if (err) throw "ERROR";
+    console.log("SAVED");
+  });
   res.redirect('/');
 });
 app.get('/sign-in-patient', function (req, res) {

@@ -7,5 +7,5 @@ var patientSchema = mongoose.Schema({
   password: String
 });
 
-var patient = mongoose.model("all_patiens", patientSchema);
+var patient = mongoose.model("all_patients", patientSchema);
 module.exports = patient;
