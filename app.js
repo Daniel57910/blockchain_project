@@ -25,7 +25,6 @@ app.post('/hello', function (req, res) {
     dob: req.body.dob,
     password: req.body.password
   });
-  console.log(savedPatient);
   savedPatient.save(function(err, res) {
     if (err) throw "ERROR";
     console.log("SAVED");
