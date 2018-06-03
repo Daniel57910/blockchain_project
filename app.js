@@ -3,6 +3,9 @@ var dependencies = require("./dependencies.js");
 var app = dependencies.setupApp();
 var Chain = require("./lib/blockChain.js");
 var Block = require("./lib/block.js");
+var patientSchema = require('./models/patientModel.js');
+console.log("PATIENT SCHEMA = ||\n");
+console.log(patientSchema);
 var chain = new Chain.Chain();
 
 dependencies.connectToDatabase(env);
@@ -13,7 +16,9 @@ app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public'))
 app.get('/', function (req, res) {
   res.render('home');
 });
+
 app.get('/sign-up-patient', function (req, res) {
+  console.log(req.body);
   res.render('sign_up_patient');
 });
 app.post('/hello', function (req, res) {
