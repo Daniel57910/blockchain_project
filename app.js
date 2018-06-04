@@ -29,7 +29,7 @@ app.get('/sign-in-doctor', function(req, res) {
 });
 
 app.get('/sign-up-patient', function (req, res) {
-  res.render('sign_up_patient');
+  res.render('patient_views/sign_up_patient');
 });
 
 app.post('/patient_signed', function (req, res) {
@@ -47,7 +47,7 @@ app.post('/patient_signed', function (req, res) {
 });
 
 app.get('/sign-in-patient', function (req, res) {
-  res.render('sign_in_patient');
+  res.render('patient_views/sign_in_patient');
 });
 
 app.post('/sign-in-patient', function (req, res) {
