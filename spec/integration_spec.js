@@ -48,7 +48,7 @@ describe('integration testing', function() {
       expect(chain.findPatientPrescriptions("Sam")).toEqual([testBlock, testBlock2]);
     });
 
-    it('returns nothing if no prescriptions for the patient', function() {
+    it('throws an error if no prescriptions for the patient', function() {
       expect(function() {
         chain.findPatientPrescriptions("John Doe");
       }).toThrow("No prescriptions for this patient name");
