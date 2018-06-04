@@ -43,5 +43,9 @@ describe('integration testing', function() {
         chain.integrityChecker();
       }).toThrow("Chain is invalid");
     });
+
+    it('finds patient-specific blocks in the chain', function() {
+      expect(chain.findPatientPrescriptions("Sam")).toEqual(testBlock);
+    });
   });
 });

@@ -1,11 +1,10 @@
 let Block = require('../lib/block.js');
 let Chain = require("../lib/blockChain.js");
-console.log(Chain);
 
 describe('chain creation', function () {
   beforeEach(function() {
     chain = new Chain.Chain();
-    block = new Block.Block('Kim');
+    block = new Block.Block("Sam", "Daniel", "Morphine");
   });
 
   it('creates first block', function() {
@@ -21,5 +20,4 @@ describe('chain creation', function () {
     chain.addBlock(block);
     expect(chain.findLastBlock()).toEqual(block);
   });
-
 });
