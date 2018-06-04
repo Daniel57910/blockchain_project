@@ -6,20 +6,15 @@ var Block = require("./lib/block.js");
 var models = require("./models/allModels.js");
 var doctorSchema = require('./models/doctorModel.js');
 var patientSchema = require('./models/patientModel.js');
-var routing = ('router')
-var doctor_routing = require('./routing/doctor_routing.js')
-
-
+var doctor = require('./controllers/doctor_controller.js');
 var chain = new Chain.Chain();
 models = new models();
 doctor = new models.doctorModel();
-console.log(doctor);
-
 dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
 app.use(dependencies.bodyParser.urlencoded({extended: true}));
 app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public')));
-app.use('/doctor', doctor_routing);
+app.use('/doctor', doctor);
 app.get('/', function (req, res) {
   res.render('home');
 });
