@@ -3,10 +3,9 @@ var dependencies = require("./dependencies.js");
 var app = dependencies.setupApp();
 var Chain = require("./lib/blockChain.js");
 var Block = require("./lib/block.js");
-var patientSchema = require('./models/patientModel.js');
-var doctorSchema = require('./models/doctorModel.js');
-var pharmacistSchema = require('./models/pharmacistModel.js');
+var models = require("./models/allModels.js");
 var chain = new Chain.Chain();
+models = new models();
 
 dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
