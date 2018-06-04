@@ -80,9 +80,6 @@ app.post('/sign-up-pharmacist', function (req, res) {
   res.render('sign_up_pharmacist');
 });
 
-app.post('/', function (req, res) {
-  res.render('home');
-});
 
 app.post('/home', function (req, res) {
   res.render('index');
