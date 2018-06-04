@@ -47,5 +47,11 @@ describe('integration testing', function() {
     it('finds patient-specific blocks in the chain', function() {
       expect(chain.findPatientPrescriptions("Sam")).toEqual([testBlock, testBlock2]);
     });
+
+    it('returns nothing if no prescriptions for the patient', function() {
+      expect(function() {
+        chain.findPatientPrescriptions("John Doe");
+      }).toThrow("No prescriptions for this patient name");
+    })
   });
 });
