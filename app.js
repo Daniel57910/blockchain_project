@@ -86,5 +86,3 @@ app.post('/info', function(req, res){
   chain.addBlock(newBlock);
   res.render('info');
 });
-
-app.listen(9000, () => console.log('Pharmacy app listening on port 9000'));
