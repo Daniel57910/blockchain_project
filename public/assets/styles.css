@@ -7,3 +7,10 @@ h1 {
     font-family: verdana;
     font-size: 300%;
 }
+
+h3 {
+    text-align: center;
+    color: blue;
+    font-family: verdana;
+    font-size: 150%;
+}

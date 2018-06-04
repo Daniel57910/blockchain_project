@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-
+  <script src="../public/home-interface.js"></script>
 
 
 </head>
@@ -19,21 +19,21 @@
 
   <br>
   <ul>
-    <h2> Are you a doctor?</h2>
+    <h3> Are you a doctor?</h3>
     <br>
     <div class="container">
       <div class="row">
-  <form class="form-horizontal"  method="post" action="/sign-in-doctor">
-  <div class="form-group">
+  <!-- <form class="form-horizontal"  method="post" action="/sign-in-doctor">
+  <div class="form-group"> -->
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" method="post" action='/sign-in-doctor' class="btn btn-default">  Sign In  </button>
     </div>
-  </div>
-</form>
-  <form class="form-horizontal"  method="get" action="/sign-up-doctor">
-  <div class="form-group" method="get" action="/sign-up-doctor">
+  <!-- </div>
+</form> -->
+  <form class="form-horizontal"  method="post" action="/sign-up-doctor">
+  <div class="form-group" method="post" action="/sign-up-doctor">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="get" action='/sign-up-doctor' class="btn btn-default">Register</button>
+      <button type="submit" method="post" action='/sign-up-doctor' class="btn btn-default">Register</button>
     </div>
   </div>
 </form>
@@ -43,21 +43,21 @@
 
 <ul>
   <br>
-  <h2> Are you a patient?</h2>
+  <h3> Are you a patient?</h3>
   <br>
   <div class="container">
     <div class="row">
-<form class="form-horizontal"  method="post" action="/sign-in-patient">
+<form class="form-horizontal">
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" method="post" action='/sign-in-patient' class="btn btn-default">  Sign In  </button>
+    <button id="sign-in-patient" type="submit" class="btn btn-default">  Sign In  </button>
   </div>
 </div>
 </form>
-<form class="form-horizontal"  method="get" action="/sign-up-patient">
-<div class="form-group" method="get" action="/sign-up-patient">
+<form class="form-horizontal"  method="post" action="/sign-up-patient">
+<div class="form-group" method="post" action="/sign-up-patient">
   <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" method="get" action='/sign-up-patient' class="btn btn-default">Register</button>
+    <button type="submit" method="post" action='/sign-up-patient' class="btn btn-default">Register</button>
   </div>
 </div>
 </form>
@@ -67,7 +67,7 @@
 
 <ul>
   <br>
-  <h2> Are you a pharmacist?</h2>
+  <h3> Are you a pharmacist?</h3>
   <br>
   <div class="container">
     <div class="row">
