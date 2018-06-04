@@ -20,8 +20,12 @@ app.get('/', function (req, res) {
   res.render('home');
 });
 
+app.get('/sign-up-doctor', function (req, res) {
+  res.render('doctor_views/sign_up_doctor');
+});
+
 app.get('/sign-in-doctor', function(req, res) {
-  res.render('sign_in_doctor');
+  res.render('doctor_views/sign_in_doctor');
 });
 
 app.get('/sign-up-patient', function (req, res) {
@@ -50,9 +54,6 @@ app.post('/sign-in-patient', function (req, res) {
   res.render('sign_in_patient');
 });
 
-app.get('/sign-up-doctor', function (req, res) {
-  res.render('sign_up_doctor');
-});
 app.get('/sign-up-pharmacist', function (req, res) {
   res.render('sign_up_pharmacist');
 });
