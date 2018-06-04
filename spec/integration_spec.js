@@ -57,5 +57,11 @@ describe('integration testing', function() {
     it('finds prescriptions issued by doctors in the chain', function() {
       expect(chain.findDoctorPrescriptions("Gadiza")).toEqual([testBlock, testBlock2]);
     });
+
+    it('throws an error if no prescriptions by the doctor', function() {
+      expect(function() {
+        chain.findDoctorPrescriptions("John Doe");
+      }).toThrow("No prescriptions by this doctor");
+    });
   });
 });
