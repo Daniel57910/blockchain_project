@@ -13,6 +13,16 @@ https://github.com/Daniel57910/blockchain_project/projects/1
 
 User Story
 -------
+
+```
+as a doctor, so I can fill in  prescriptions, I want to sign up as a doctor
+```
+```
+as a pharmacist, so I can see prescriptions, I want to sign up as a pharmacist
+```
+```
+as a patient, so I can see my prescriptions, I want to sign up as a patient
+```
 ```
 as a doctor, so I can record patient prescriptions, I want to fill in a form with the name and prescription of my patient
 ```
@@ -35,4 +45,4 @@ Run project
 * install Node.js if not done so already
 * run ```npm install``` to install all the dependencies
 * for testing run ```npm test```
-* run ```node app.js``` to serve the application, go to localhost:9000 in your browser
+* run ```node app.js``` to serve the application, go to ```localhost:9000``` in your browser
