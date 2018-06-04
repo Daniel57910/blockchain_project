@@ -1,6 +1,6 @@
-let app = require('./dependencies.js');
+let app = require('./app');
 var port = process.env.PORT || 9000;
 
-var server = app.express.listen(port, function () {
-  console.log("listening on " + port);
+var server = app.listen(port, function () {
+  console.log("Express server listening on port" + port);
 });

@@ -86,3 +86,5 @@ app.post('/info', function(req, res){
   chain.addBlock(newBlock);
   res.render('info');
 });
+
+module.exports = app;
