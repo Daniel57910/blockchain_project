@@ -13,13 +13,11 @@ var patientController = require('./controllers/patientController');
 var chain = new Chain.Chain();
 models = new models();
 doctor = new models.doctorModel();
-// console.log(doctor);
 
 app.use('/', doctorController);
 app.use('/', patientController);
 
 var chain = new Chain.Chain();
-doctor = new models.doctorModel();
 dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
 app.use(dependencies.bodyParser.urlencoded({extended: true}));
@@ -28,9 +26,7 @@ app.get('/', function (req, res) {
   res.render('home');
 });
 
-app.get('/sign-up-patient', function (req, res) {
-  res.render('patient_views/sign_up_patient');
-});
+
 
 app.post('/patient_signed', function (req, res) {
   let savedPatient = new patientSchema({
