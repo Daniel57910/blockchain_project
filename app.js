@@ -6,6 +6,8 @@ var Block = require("./lib/block.js");
 var models = require("./models/allModels.js");
 var chain = new Chain.Chain();
 models = new models();
+doctor = new models.doctorModel();
+console.log(doctor);
 
 dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
