@@ -7,8 +7,11 @@ describe('integration testing', function() {
   beforeEach(function() {
     jasmine.clock().install();
     testBlock = new Block.Block("Sam", "Gadiza", "Morphine");
+    testBlock2 = new Block.Block("Sam", "Gadiza", "Valium");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
     chain = new Chain.Chain();
+    chain.addBlock(testBlock);
+    chain.addBlock(testBlock2);
   });
 
   afterEach(function() {
@@ -18,19 +21,11 @@ describe('integration testing', function() {
   describe('chain creation', function() {
 
     it("assign previous hash to the new block", function(){
-      chain.addBlock(testBlock);
-      chain.addBlock(new Block.Block("Daniel,", "Sam", "Valium"));
       expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
     });
   });
 
   describe('block integrity', function() {
-
-    beforeEach(function() {
-      testBlock2 = new Block.Block("Sam", "Gadiza", "Valium");
-      chain.addBlock(testBlock);
-      chain.addBlock(testBlock2);
-    });
 
     it('returns true if chain is valid', function() {
       expect(chain.integrityChecker()).toBe(true);
@@ -43,6 +38,9 @@ describe('integration testing', function() {
         chain.integrityChecker();
       }).toThrow("Chain is invalid");
     });
+  });
+
+  describe('prescription search functionality', function() {
 
     it('finds patient-specific blocks in the chain', function() {
       expect(chain.findPatientPrescriptions("Sam")).toEqual([testBlock, testBlock2]);
