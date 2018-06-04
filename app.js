@@ -35,8 +35,8 @@ app.post('/patient_signed', function (req, res) {
     dob: req.body.dob,
     password: req.body.password
   });
-  savedPatient.save(function(err, res) { 
-    if (err) throw "ERROR"; 
+  savedPatient.save(function(err, res) {
+    if (err) throw "ERROR";
     console.log("SAVED\n" + savedPatient);
   });
   res.redirect('/');
@@ -52,6 +52,12 @@ app.post('/sign-in-patient', function (req, res) {
 
 app.get('/sign-up-doctor', function (req, res) {
   res.render('sign_up_doctor');
+});
+app.get('/sign-up-pharmacist', function (req, res) {
+  res.render('sign_up_pharmacist');
+});
+app.get('/sign-in-pharmacist', function (req, res) {
+  res.render('sign_in_pharmacist');
 });
 
 app.post('/doctor_signed', function (req, res) {

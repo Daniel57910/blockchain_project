@@ -1,9 +1,22 @@
-console.log("hello");
  $(document).ready(function () {
-   console.log("PAGE LOADING");
   $("#doctor_sign_in").click(function() {
     window.location.href = '/sign-in-doctor';
-    console.log("sign in doctor");
   });
+ $("#doctor_sign_up").click(function() {
+   window.location.href = '/sign-up-doctor';
+ });
 
+ $("#patient_sign_in").click(function() {
+   window.location.href = '/sign-in-patient';
+ });
+$("#patient_sign_up").click(function() {
+  window.location.href = '/sign-up-patient';
+});
+
+$("#pharmacist_sign_in").click(function() {
+  window.location.href = '/sign-in-pharmacist';
+});
+$("#pharmacist_sign_up").click(function() {
+ window.location.href = '/sign-up-pharmacist';
+});
 });
