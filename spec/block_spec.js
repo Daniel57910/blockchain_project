@@ -60,4 +60,9 @@ describe('block creation', function() {
     chain.addBlock(new Block.Block("Daniel,", "Sam", "Valium"));
     expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
   });
+
+  it('mines the block with the right difficulty', function(){
+    testBlock.mineBlock(3)
+    expect(testBlock.hash.substring(0, 3)).toEqual('000')
+  })
 });

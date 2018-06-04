@@ -11,13 +11,17 @@ describe('chain creation', function () {
       this.prescription = prescription;
       this.previousHash = previousHash;
       this.hash = this.calculateHash();
+      this.nonce = 0
     }
     Block.prototype.calculateHash = function() {
-      return '123'
+      return '000000123'
     }
     Block.prototype.currentDate = function() {
-      return '12032018'
+      return '2032018'
     }
+    Block.prototype.mineBlock = function(difficulty) {
+      this.hash = this.calculateHash();
+      }
     block = new Block("Sam", "Daniel", "Morphine");
   });
 

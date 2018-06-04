@@ -62,4 +62,14 @@ describe('integration testing', function() {
       }).toThrow("No prescriptions by this doctor");
     });
   });
+  describe('mining test', function(){
+    beforeEach(function(){
+      difficultBlock = new Block.Block("Sam", "Gadiza", "Valium");
+      chain.difficulty = 3
+      chain.addBlock(difficultBlock)
+    })
+    it('hash has three zeros at the begining', function(){
+      expect(chain.chain[3].hash.substring(0, 3)).toEqual('000')
+    })
+  })
 });
