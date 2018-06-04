@@ -8,10 +8,10 @@ router.use(bodyParser.urlencoded({
 
 router.use(bodyParser.json());
 
-app.get('/sign-up-pharmacist', function (req, res) {
+router.get('/sign-up-pharmacist', function (req, res) {
   res.render('pharmacist_views/sign_up_pharmacist');
 });
-app.get('/sign-in-pharmacist', function (req, res) {
+router.get('/sign-in-pharmacist', function (req, res) {
   res.render('pharmacist_views/sign_in_pharmacist');
 });
 
