@@ -1,5 +1,4 @@
 let Block = require('../lib/block.js');
-let Chain = require("../lib/blockChain.js");
 const DATEFORMAT = require("dateformat");
 console.log(Block);
 
@@ -9,7 +8,22 @@ describe('block creation', function() {
     jasmine.clock().install();
     testBlock = new Block.Block("Sam", "Daniel", "Morphine");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
-    chain = new Chain.Chain();
+    // chain = new Chain.Chain();
+    function Blockchain() {
+      this.chain = [new Block.Block('Genesis_Patient', 'Genesis_Doctor', 'Genesis_Prescription')];
+    }
+
+    Blockchain.prototype.findLastBlock = function() {
+      return this.chain[this.chain.length - 1];
+    }
+
+    Blockchain.prototype.addBlock = function(newBlock) {
+      newBlock.previousHash = this.findLastBlock().hash;
+      newBlock.index = this.findLastBlock().index + 1;
+      newBlock.hash = newBlock.calculateHash();
+      this.chain.push(newBlock);
+    }
+    chain = new Blockchain
   });
 
   afterEach(function() {
