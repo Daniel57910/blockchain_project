@@ -55,10 +55,10 @@ app.post('/sign-in-patient', function (req, res) {
 });
 
 app.get('/sign-up-pharmacist', function (req, res) {
-  res.render('sign_up_pharmacist');
+  res.render('pharmacist_views/sign_up_pharmacist');
 });
 app.get('/sign-in-pharmacist', function (req, res) {
-  res.render('sign_in_pharmacist');
+  res.render('pharmacist_views/sign_in_pharmacist');
 });
 
 app.post('/doctor_signed', function (req, res) {
@@ -73,14 +73,6 @@ app.post('/doctor_signed', function (req, res) {
   });
   res.redirect('/');
 });
-
-app.get('/sign-up-pharmacist', function (req, res) {
-  res.render('sign_up_pharmacist');
-});
-app.post('/sign-up-pharmacist', function (req, res) {
-  res.render('sign_up_pharmacist');
-});
-
 
 app.post('/home', function (req, res) {
   res.render('index');
