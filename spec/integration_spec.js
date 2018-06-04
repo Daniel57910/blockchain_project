@@ -6,7 +6,7 @@ describe('integration testing', function() {
 
   beforeEach(function() {
     jasmine.clock().install();
-    testBlock = new Block.Block("Sam", "Daniel", "Morphine");
+    testBlock = new Block.Block("Sam", "Gadiza", "Morphine");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
     chain = new Chain.Chain();
   });
@@ -53,5 +53,9 @@ describe('integration testing', function() {
         chain.findPatientPrescriptions("John Doe");
       }).toThrow("No prescriptions for this patient name");
     })
+
+    it('finds prescriptions issued by doctors in the chain', function() {
+      expect(chain.findDoctorPrescriptions("Gadiza").toEqual([testBlock, testBlock2]));
+    });
   });
 });
