@@ -6,6 +6,7 @@ var Block = require("./lib/block.js");
 var models = require("./models/allModels.js");
 var doctorSchema = require('./models/doctorModel.js');
 var patientSchema = require('./models/patientModel.js');
+<<<<<<< HEAD
 var doctorController = require('./controllers/doctorController')
 
 
@@ -16,11 +17,21 @@ doctor = new models.doctorModel();
 
 app.use('/', doctorController);
 
+=======
+var doctor = require('./controllers/doctor_controller.js');
+var chain = new Chain.Chain();
+models = new models();
+doctor = new models.doctorModel();
+>>>>>>> d550fe4a38afe33d019edef3f0cdafd6653630b7
 dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
 app.use(dependencies.bodyParser.urlencoded({extended: true}));
 app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public')));
+<<<<<<< HEAD
 
+=======
+app.use('/doctor', doctor);
+>>>>>>> d550fe4a38afe33d019edef3f0cdafd6653630b7
 app.get('/', function (req, res) {
   res.render('home');
 });
