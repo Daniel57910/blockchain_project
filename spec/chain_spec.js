@@ -7,7 +7,6 @@ describe('chain creation', function () {
     chain = new Chain.Chain();
     block = new Block.Block('Kim');
   });
-
   it('creates first block', function() {
     expect(chain.createFirstBlock()).toEqual(chain.chain[0]);
   });
@@ -16,9 +15,11 @@ describe('chain creation', function () {
     chain.addBlock(block);
     expect(chain.chain[1]).toEqual(block)
   });
-
+   expect(chain.chain[1]).toEqual(block);
+  }); 
   it('finds the last block', function() {
     chain.addBlock(block);
     expect(chain.findLastBlock()).toEqual(block);
   });
+
 });
