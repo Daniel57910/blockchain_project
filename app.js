@@ -6,6 +6,10 @@ var Block = require("./lib/block.js");
 var models = require("./models/allModels.js");
 var doctorSchema = require('./models/doctorModel.js');
 var patientSchema = require('./models/patientModel.js');
+var routing = ('router')
+var doctor_routing = require('./routing/doctor_routing.js')
+
+
 var chain = new Chain.Chain();
 models = new models();
 doctor = new models.doctorModel();
@@ -15,18 +19,18 @@ dependencies.connectToDatabase(env);
 app.set('view engine', 'ejs');
 app.use(dependencies.bodyParser.urlencoded({extended: true}));
 app.use(dependencies.express.static(dependencies.path.join(__dirname, 'public')));
-
+app.use('/doctor', doctor_routing);
 app.get('/', function (req, res) {
   res.render('home');
 });
 
-app.get('/sign-up-doctor', function (req, res) {
-  res.render('doctor_views/sign_up_doctor');
-});
-
-app.get('/sign-in-doctor', function(req, res) {
-  res.render('doctor_views/sign_in_doctor');
-});
+// app.get('/sign-up-doctor', function (req, res) {
+//   res.render('doctor_views/sign_up_doctor');
+// });
+//
+// app.get('/sign-in-doctor', function(req, res) {
+//   res.render('doctor_views/sign_in_doctor');
+// });
 
 app.get('/sign-up-patient', function (req, res) {
   res.render('patient_views/sign_up_patient');
@@ -61,18 +65,18 @@ app.get('/sign-in-pharmacist', function (req, res) {
   res.render('pharmacist_views/sign_in_pharmacist');
 });
 
-app.post('/doctor_signed', function (req, res) {
-  savedDoctor = new doctorSchema({
-    fullName: req.body.fullName,
-    doctorID: req.body.ID,
-    password: req.body.password
-  });
-  savedDoctor.save(function(err, res) {
-    if (err) throw "ERR";
-    console.log("SAVED\n" + savedDoctor);
-  });
-  res.redirect('/');
-});
+// app.post('/doctor_signed', function (req, res) {
+//   savedDoctor = new doctorSchema({
+//     fullName: req.body.fullName,
+//     doctorID: req.body.ID,
+//     password: req.body.password
+//   });
+//   savedDoctor.save(function(err, res) {
+//     if (err) throw "ERR";
+//     console.log("SAVED\n" + savedDoctor);
+//   });
+//   res.redirect('/');
+// });
 
 app.post('/home', function (req, res) {
   res.render('index');
