@@ -55,7 +55,7 @@ describe('integration testing', function() {
     })
 
     it('finds prescriptions issued by doctors in the chain', function() {
-      expect(chain.findDoctorPrescriptions("Gadiza").toEqual([testBlock, testBlock2]));
+      expect(chain.findDoctorPrescriptions("Gadiza")).toEqual([testBlock, testBlock2]);
     });
   });
 });
