@@ -27,7 +27,7 @@ describe('integration testing', function() {
   describe('block integrity', function() {
 
     beforeEach(function() {
-      testBlock2 = new Block.Block("Gadiza", "Sam", "Valium");
+      testBlock2 = new Block.Block("Sam", "Gadiza", "Valium");
       chain.addBlock(testBlock);
       chain.addBlock(testBlock2);
     });
@@ -45,7 +45,7 @@ describe('integration testing', function() {
     });
 
     it('finds patient-specific blocks in the chain', function() {
-      expect(chain.findPatientPrescriptions("Sam")).toEqual(testBlock);
+      expect(chain.findPatientPrescriptions("Sam")).toEqual([testBlock, testBlock2]);
     });
   });
 });
