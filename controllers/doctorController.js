@@ -33,7 +33,7 @@ router.post('/doctor_logged_in', function(req, res) {
 module.exports = router;
 
 function logDoctorIn(obj) {
-  loggedInDoctor = new loggedInDoctor(obj.fullName, obj.doctorID, obj.password);
+  loggedInDoctor = new loggedInDoctor(obj.userName, obj.doctorID, obj.password);
   console.log("logged in doctor is \n" + loggedInDoctor.name + " " + loggedInDoctor.ID + " " + loggedInDoctor.password);
 }
 
