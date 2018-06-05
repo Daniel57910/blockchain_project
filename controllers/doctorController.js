@@ -28,7 +28,6 @@ router.post('/doctor_signed', function (req, res, next) {
     fullName: req.body.fullName,
     doctorID: req.body.ID,
     password: req.body.password,
-    // confirm_password: req.body.confirm_password
   });
   savedDoctor.save(function(err, doctor) {
     if (err) {

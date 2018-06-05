@@ -18,12 +18,7 @@ var doctorSchema = mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-  // confirm_password:{
-  //   type: String,
-  //   required: true,
-  // }
-
+  }
 });
 
 doctorSchema.pre('save', function(next){
