@@ -4,7 +4,7 @@ const DATEFORMAT = require("dateformat");
 class Block {
   constructor(patientName, doctorName, prescription, previousHash = "") {
     this.index = 1;
-    this.timestamp = this.currentDate();
+    this.timestamp = currentDate();
     this.patientName = patientName;
     this.doctorName = doctorName;
     this.prescription = prescription;
@@ -24,10 +24,11 @@ class Block {
     }
   }
 
-  currentDate() {
+}
+
+  function currentDate() {
     return DATEFORMAT(new Date(), "isoDateTime");
   }
-}
 
 exports.Block = Block;
 
