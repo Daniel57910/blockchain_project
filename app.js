@@ -26,6 +26,7 @@ app.get('/', function (req, res) {
 app.post('/home', function (req, res) {
   res.render('index');
 });
+
 app.get('/add_prescription', function (req, res) {
   res.render('add_prescription');
 });
@@ -33,7 +34,8 @@ app.get('/add_prescription', function (req, res) {
 app.post('/prescription_confirmation', function(req, res){
   let newBlock = new Block.Block(req.body.patientNames, req.body.doctorName, req.body.prescription);
   chain.addBlock(newBlock);
-  res.render('info');
+  res.render('prescription_stored');
 });
+
 
 module.exports = app;
