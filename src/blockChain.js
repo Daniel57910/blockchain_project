@@ -1,4 +1,5 @@
 const block = require("./block.js");
+const prescription = require("./prescription.js");
 
 class Blockchain {
   constructor() {
@@ -7,7 +8,7 @@ class Blockchain {
   }
 
   createFirstBlock() {
-    return new block.Block('Genesis_Patient', 'Genesis_Doctor', 'Genesis_Prescription');
+    return new block.Block(new prescription("Genesis Doctor", "Genesis Patient", "Genesis Prescription"));
   }
 
   findLastBlock() {
