@@ -10,7 +10,7 @@ class Block {
     this.prescription = prescription;
     this.previousHash = previousHash;
     this.hash = this.calculateHash();
-    this.nonce = 0
+    this.nonce = 0;
   }
 
   calculateHash() {
