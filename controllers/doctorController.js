@@ -16,6 +16,10 @@ router.get('/sign-in-doctor', function(req, res) {
 });
 
 router.post('/doctor_signed', function (req, res, next) {
+  if (req.body.password !== req.body.confirm_password) {
+    var err = 'Password not confirmed do not match.'
+    return next(err);
+  }
   if (req.body.fullName &&
      req.body.ID &&
      req.body.password &&
@@ -24,16 +28,16 @@ router.post('/doctor_signed', function (req, res, next) {
     fullName: req.body.fullName,
     doctorID: req.body.ID,
     password: req.body.password,
-    confirm_password: req.body.confirm_password
+    // confirm_password: req.body.confirm_password
   });
   savedDoctor.save(function(err, doctor) {
     if (err) {
       var err = 'User already exist'
-      return next(err)
+      return next(err);
     }
     else {
     console.log("SAVED\n" + savedDoctor);
-    res.redirect('/');
+    res.redirect('/add_prescription');
   };
 });
 }
