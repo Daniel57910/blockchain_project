@@ -1,8 +1,7 @@
 class Doctor {
-  constructor(name, id, password) {
+  constructor(name, id) {
     this.name = name;
     this.ID = id;
-    this.password = password;
   }
 }
 module.exports = Doctor;

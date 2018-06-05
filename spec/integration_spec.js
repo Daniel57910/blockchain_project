@@ -10,8 +10,8 @@ const DATEFORMAT = require("dateformat");
 describe('integration testing', function() {
 
   beforeEach(function() {
-    prescription1 = new Prescription("Sam", "Gadiza", "Ibruprofen");
-    prescription2 = new Prescription("Sam", "Gadiza", "Paracetamol");
+    prescription1 = new Prescription("Sam", "1", "Gadiza", "2", "Ibruprofen");
+    prescription2 = new Prescription("Sam", "1", "Gadiza", "2", "Paracetamol");
     testBlock = new Block.Block(prescription1);
     testBlock2 = new Block.Block(prescription2);
     baseTime = DATEFORMAT(new Date(), "isoDateTime");

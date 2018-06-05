@@ -8,7 +8,7 @@ class Blockchain {
   }
 
   createFirstBlock() {
-    return new block.Block(new prescription("Genesis Doctor", "Genesis Patient", "Genesis Prescription"));
+    return new block.Block(new prescription("Genesis Patient","Genesis PatientID", "Genesis Doctor", "Genesis DoctorID", "Genesis Prescription"));
   }
 
   findLastBlock() {
@@ -42,7 +42,7 @@ class Blockchain {
     var prescriptions = []
     for(let i = 1; i < this.chain.length; i++){
       var currentBlock = this.chain[i].prescription;
-      if(currentBlock.patientName === patientName){
+      if(currentBlock.patient.name === patientName){
         prescriptions.push(currentBlock);
       }
     }
@@ -56,7 +56,7 @@ class Blockchain {
     var doctorPrescriptions = []
     for(let i = 1; i < this.chain.length; i++){
       var currentBlock = this.chain[i].prescription;
-      if(currentBlock.doctorName === doctorName){
+      if(currentBlock.doctor.name === doctorName){
         doctorPrescriptions.push(currentBlock);
       }
     }
