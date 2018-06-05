@@ -1,4 +1,4 @@
-let Block = require('../lib/block.js');
+let Block = require('../src/block.js');
 const DATEFORMAT = require("dateformat");
 console.log(Block);
 

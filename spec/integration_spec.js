@@ -1,5 +1,5 @@
-let Block = require('../lib/block.js');
-let Chain = require("../lib/blockChain.js");
+let Block = require('../src/block.js');
+let Chain = require("../src/blockChain.js");
 const DATEFORMAT = require("dateformat");
 
 describe('integration testing', function() {

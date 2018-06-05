@@ -1,8 +1,8 @@
 var env = process.env.NODE_ENV || "test";
 var dependencies = require("./dependencies.js");
 var app = dependencies.setupApp();
-var Chain = require("./lib/blockChain.js");
-var Block = require("./lib/block.js");
+var Chain = require("./src/blockChain.js");
+var Block = require("./src/block.js");
 var doctorController = require('./controllers/doctorController');
 var patientController = require('./controllers/patientController');
 var pharmacistController = require('./controllers/pharmacistController');
