@@ -24,8 +24,8 @@ router.get('/sign-in-doctor', function(req, res) {
 });
 
 router.post('/doctor_logged_in', function(req, res) {
-  console.log("DATA COMING!");
-  doctorSchema.findOne({fullName: res.body.fullName}, function(err, obj) { logDoctorIn(obj);} );
+  console.log(req.body);
+  doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) { logDoctorIn(obj);} );
   res.redirect('/add_prescription');
 });
 
@@ -33,9 +33,8 @@ router.post('/doctor_logged_in', function(req, res) {
 module.exports = router;
 
 function logDoctorIn(obj) {
-  console.log(obj);
   loggedInDoctor = new loggedInDoctor(obj.fullName, obj.doctorID, obj.password);
-  console.log("logged in doctor is \n" + loggedInDoctor.name);
+  console.log("logged in doctor is \n" + loggedInDoctor.name + " " + loggedInDoctor.ID + " " + loggedInDoctor.password);
 }
 
 function saveDoctor(req) {
