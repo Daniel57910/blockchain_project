@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
 var doctorSchema = mongoose.Schema({
   fullName: {
@@ -23,6 +24,17 @@ var doctorSchema = mongoose.Schema({
     required: true,
   }
 
+});
+
+doctorSchema.pre('save', function(next){
+  var doc = this;
+  bcrypt.hash(doc.password, 10, function(err, hash) {
+    if (err) {
+      return next(err);
+    }
+    doc.password = hash;
+    next();
+  });
 });
 
 var doctor = mongoose.model("all_doctors", doctorSchema);

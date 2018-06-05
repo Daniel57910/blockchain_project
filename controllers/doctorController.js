@@ -28,7 +28,7 @@ router.post('/doctor_signed', function (req, res, next) {
   });
   savedDoctor.save(function(err, doctor) {
     if (err) {
-      var err = 'user already exist'
+      var err = 'User already exist'
       return next(err)
     }
     else {
