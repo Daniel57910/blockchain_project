@@ -16,16 +16,21 @@ router.get('/sign-in-doctor', function(req, res) {
 });
 
 router.post('/doctor_signed', function (req, res) {
+  saveDoctor(req);
+  res.redirect('/');
+});
+
+module.exports = router;
+
+function saveDoctor(req) {
   savedDoctor = new doctorSchema({
     fullName: req.body.fullName,
     doctorID: req.body.ID,
     password: req.body.password
   });
-  savedDoctor.save(function(err, res) {
+  savedDoctor.save(function (err, res) {
     if (err) throw "ERR";
     console.log("SAVED\n" + savedDoctor);
   });
-  res.redirect('/');
-});
 
-module.exports = router;
+}
