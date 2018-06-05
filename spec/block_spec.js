@@ -8,9 +8,9 @@ describe('block creation', function() {
     testBlock = new Block.Block("Sam", "Daniel", "Morphine");
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
 
-    function Prescription(doctor = "Daniel", patient = "Sam", prescription = "Morphine") {
-      this.doctorName = doctor;
+    function Prescription(patient = "Sam", doctor = "Daniel", prescription = "Morphine") {
       this.patientName = patient;
+      this.doctorName = doctor;
       this.prescription = prescription;
     }
 

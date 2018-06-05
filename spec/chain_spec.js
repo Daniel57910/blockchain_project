@@ -3,11 +3,14 @@ let Chain = require("../src/blockChain.js");
 describe('chain creation', function () {
   beforeEach(function() {
     chain = new Chain.Chain();
-    function Block(patientName, doctorName, prescription, previousHash = '') {
+    function Prescription(patient = "Sam", doctor = "Daniel", prescription = "Morphine") {
+      this.patientName = patient;
+      this.doctorName = doctor;
+      this.prescription = prescription;
+    }
+    function Block(prescription, previousHash = '') {
       this.index = 1;
       this.timestamp = this.currentDate();
-      this.patientName = patientName;
-      this.doctorName = doctorName;
       this.prescription = prescription;
       this.previousHash = previousHash;
       this.hash = this.calculateHash();
@@ -22,7 +25,8 @@ describe('chain creation', function () {
     Block.prototype.mineBlock = function(difficulty) {
       this.hash = this.calculateHash();
       };
-    block = new Block("Sam", "Daniel", "Morphine");
+    prescription = new Prescription();
+    block = new Block(prescription);
   });
 
   it('creates first block', function() {
