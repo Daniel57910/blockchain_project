@@ -17,9 +17,15 @@ router.get('/sign-in-patient', function (req, res) {
 });
 
 router.post('/patient_signed', function (req, res) {
+  savePatient(req);
+  res.redirect('/');
+});
+
+module.exports = router;
+
+function savePatient(req) {
   let savedPatient = new patientSchema({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    userName: req.body.userName,
     dob: req.body.dob,
     password: req.body.password
   });
@@ -27,7 +33,4 @@ router.post('/patient_signed', function (req, res) {
     if (err) throw "ERROR";
     console.log("SAVED\n" + savedPatient);
   });
-  res.redirect('/');
-});
-
-module.exports = router;
+}
