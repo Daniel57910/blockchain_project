@@ -42,7 +42,7 @@ class Blockchain {
     var prescriptions = []
     for(let i = 1; i < this.chain.length; i++){
       var currentBlock = this.chain[i];
-      if(currentBlock.patientName === patientName){
+      if(currentBlock.prescription.patientName === patientName){
         prescriptions.push(currentBlock);
       }
     }
