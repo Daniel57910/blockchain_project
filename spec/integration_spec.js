@@ -44,7 +44,7 @@ describe('integration testing', function() {
   describe('prescription search functionality', function() {
 
     it('finds patient-specific blocks in the chain', function() {
-      expect(chain.findPatientPrescriptions("Sam")).toEqual([testBlock, testBlock2]);
+      expect(chain.findPatientPrescriptions("Sam")).toEqual([prescription1, prescription2]);
     });
 
     it('throws an error if no prescriptions for the patient', function() {
@@ -54,7 +54,7 @@ describe('integration testing', function() {
     });
 
     it('finds prescriptions issued by doctors in the chain', function() {
-      expect(chain.findDoctorPrescriptions("Gadiza")).toEqual([testBlock, testBlock2]);
+      expect(chain.findDoctorPrescriptions("Gadiza")).toEqual([prescription1, prescription2]);
     });
 
     it('throws an error if no prescriptions by the doctor', function() {

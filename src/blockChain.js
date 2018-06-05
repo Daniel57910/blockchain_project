@@ -41,8 +41,8 @@ class Blockchain {
   findPatientPrescriptions(patientName) {
     var prescriptions = []
     for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i];
-      if(currentBlock.prescription.patientName === patientName){
+      var currentBlock = this.chain[i].prescription;
+      if(currentBlock.patientName === patientName){
         prescriptions.push(currentBlock);
       }
     }
@@ -55,8 +55,8 @@ class Blockchain {
   findDoctorPrescriptions(doctorName) {
     var doctorPrescriptions = []
     for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i];
-      if(currentBlock.prescription.doctorName === doctorName){
+      var currentBlock = this.chain[i].prescription;
+      if(currentBlock.doctorName === doctorName){
         doctorPrescriptions.push(currentBlock);
       }
     }
