@@ -7,7 +7,7 @@ describe('Creating a new Pharmacist', function() {
   });
 
   it("assigns the Pharmacist a name, ID and password on initialization", function() {
-    expect(pharmacist.name).toEqual("Jim");
+    expect(pharmacist.name).toEqual("Bob");
     expect(pharmacist.ID).toEqual("123456");
     expect(pharmacist.password).toEqual("ABC9999");
   });
