@@ -12,9 +12,9 @@ class Block {
   }
 
   calculateHash() {
-    return ENCRYPT(this.index + this.timestamp + JSON.stringify([this.prescription.patientName, this.prescription.doctorName, this.prescription.prescription]) + this.previousHash + this.nonce).toString();
+    return ENCRYPT(this.index + this.timestamp + JSON.stringify(this.prescription) + this.previousHash + this.nonce).toString();
   }
-  
+
   mineBlock(difficulty) {
     while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
       this.nonce++;
