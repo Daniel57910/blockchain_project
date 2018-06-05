@@ -2,7 +2,7 @@
   "name": "final_project",
   "version": "1.0.0",
   "description": "sample json file for final project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "jasmine"
   },
