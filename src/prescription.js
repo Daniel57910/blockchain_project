@@ -1,8 +1,8 @@
 class Prescription {
-  constructor(doctorName, patientName, drugsPrescribed) {
+  constructor(doctorName, patientName, prescription) {
     this.doctorName = doctorName;
     this.patientName = patientName;
-    this.drugsPrescribed = drugsPrescribed;
+    this.prescription = drugsPrescribed;
   }
 }
 module.exports = Prescription;

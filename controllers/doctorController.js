@@ -29,7 +29,6 @@ router.post('/doctor_logged_in', function(req, res) {
   res.redirect('/add_prescription');
 });
 
-
 module.exports = router;
 
 function logDoctorIn(obj) {
@@ -47,5 +46,4 @@ function saveDoctor(req) {
     if (err) throw "ERR";
     console.log("SAVED\n" + savedDoctor);
   });
-
 }
