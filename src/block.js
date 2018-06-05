@@ -19,17 +19,21 @@ class Block {
 
   mineBlock(difficulty) {
     while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
-             this.nonce++;
-             this.hash = this.calculateHash();
+      this.nonce++;
+      this.hash = this.calculateHash();
     }
   }
 
 }
 
-  function currentDate() {
-    return DATEFORMAT(new Date(), "isoDateTime");
-  }
+function currentDate() {
+  return DATEFORMAT(new Date(), "isoDateTime");
+}
 
+
+function calculateHash(index, timestamp, patientName, doctorName, prescription, previousHash, nonce) {
+  return ENCRYPT(index + timestamp + JSON.stringify([patientName, doctorName, prescription]) +  previousHash + nonce).toString();
+}
 exports.Block = Block;
 
 exports.productionBlock = new Block();
