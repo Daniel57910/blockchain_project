@@ -1,4 +1,4 @@
-let Chain = require("../lib/blockChain.js");
+let Chain = require("../src/blockChain.js");
 
 describe('chain creation', function () {
   beforeEach(function() {
