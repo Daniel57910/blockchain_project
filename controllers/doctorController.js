@@ -19,7 +19,8 @@ router.post('/doctor_signed', function (req, res) {
   savedDoctor = new doctorSchema({
     fullName: req.body.fullName,
     doctorID: req.body.ID,
-    password: req.body.password
+    password: req.body.password,
+    confirm_password: req.body.confirm_password
   });
   savedDoctor.save(function(err, res) {
     if (err) throw "ERR";
