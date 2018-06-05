@@ -5,5 +5,4 @@ class Doctor {
     this.password = password;
   }
 }
-
 module.exports = Doctor;
