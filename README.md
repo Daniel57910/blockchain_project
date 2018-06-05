@@ -15,19 +15,29 @@ User Story
 -------
 
 ```
-as a doctor, so I can fill in  prescriptions, I want to sign up as a doctor
+As a doctor,
+so I can fill out prescriptions,
+I want to sign up as a doctor
 ```
 ```
-as a pharmacist, so I can see prescriptions, I want to sign up as a pharmacist
+As a pharmacist,
+so I can see prescriptions assigned to me,
+I want to sign up as a pharmacist
 ```
 ```
-as a patient, so I can see my prescriptions, I want to sign up as a patient
+As a patient,
+so I can see my prescriptions,
+I want to sign up as a patient
 ```
 ```
-as a doctor, so I can record patient prescriptions, I want to fill in a form with the name and prescription of my patient
+As a doctor,
+so I can record patient prescriptions,
+I want to fill in a form with the name and prescription of my patient
 ```
 ```
-as a doctor so I can safely store data, I want to store information in a blockchain
+As a doctor,
+so I can store prescription data securely,
+I want to store information in a blockchain
 ```
 
 Technologies
