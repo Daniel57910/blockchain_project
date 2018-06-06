@@ -19,11 +19,6 @@ class Block {
     while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
              this.nonce++;
              this.hash = this.calculateHash();
-             console.log(this.hash)
-
-      this.nonce++;
-      this.hash = this.calculateHash();
-
     }
   }
 
