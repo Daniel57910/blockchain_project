@@ -15,6 +15,7 @@ describe('chainChecker tests', function(){
 
     function Blockchain() {
       this.chain = [block, block2];
+      this.difficulty = 2
     }
     chain = new Blockchain();
     chainchecker = new ChainChecker.Chainchecker();
@@ -22,6 +23,13 @@ describe('chainChecker tests', function(){
 
     it('throw an error if block hash does not match block.calculateHash()', function(){
       block2.hash = '00wrong hash'
+      expect(function() {
+        chainchecker.integrityChecker(chain);
+      }).toThrow("Chain is invalid");
+    })
+
+    it('throw an error if block previoushash does not match previousblock.hash', function(){
+      block2.previousHash = '00wrong hash'
       expect(function() {
         chainchecker.integrityChecker(chain);
       }).toThrow("Chain is invalid");
