@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/add_prescription', function (req, res) {
+router.get('/doctor/add_prescription', function (req, res) {
   res.render('add_prescription');
 });
 
