@@ -21,34 +21,6 @@ class Blockchain {
     newBlock.mineBlock(this.difficulty);
     this.chain.push(newBlock);
   }
-
-  findPatientPrescriptions(patientName) {
-    var prescriptions = []
-    for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i].prescription;
-      if(currentBlock.patient.name === patientName){
-        prescriptions.push(currentBlock);
-      }
-    }
-    if(prescriptions.length === 0){
-      throw 'No prescriptions for this patient name';
-    }
-    return prescriptions
-  }
-
-  findDoctorPrescriptions(doctorName) {
-    var doctorPrescriptions = []
-    for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i].prescription;
-      if(currentBlock.doctor.name === doctorName){
-        doctorPrescriptions.push(currentBlock);
-      }
-    }
-    if(doctorPrescriptions.length === 0){
-      throw 'No prescriptions by this doctor';
-    }
-    return doctorPrescriptions
-  }
 }
 
 exports.Chain = Blockchain;
