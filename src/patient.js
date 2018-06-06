@@ -4,5 +4,4 @@ class Patient {
     this.ID = id;
   }
 }
-
 module.exports = Patient;

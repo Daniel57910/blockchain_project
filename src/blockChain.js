@@ -21,50 +21,6 @@ class Blockchain {
     newBlock.mineBlock(this.difficulty);
     this.chain.push(newBlock);
   }
-
-  integrityChecker() {
-    for(let i = 1; i < this.chain.length; i++){
-        const currentBlock = this.chain[i];
-        const previousBlock = this.chain[i - 1];
-
-        if(currentBlock.hash !== currentBlock.calculateHash()){
-            throw 'Chain is invalid';
-        }
-
-        if(currentBlock.previousHash !== previousBlock.hash){
-            throw 'Chain is invalid';
-        }
-    }
-    return true;
-  }
-
-  findPatientPrescriptions(patientName) {
-    var prescriptions = []
-    for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i].prescription;
-      if(currentBlock.patient.name === patientName){
-        prescriptions.push(currentBlock);
-      }
-    }
-    if(prescriptions.length === 0){
-      throw 'No prescriptions for this patient name';
-    }
-    return prescriptions
-  }
-
-  findDoctorPrescriptions(doctorName) {
-    var doctorPrescriptions = []
-    for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i].prescription;
-      if(currentBlock.doctor.name === doctorName){
-        doctorPrescriptions.push(currentBlock);
-      }
-    }
-    if(doctorPrescriptions.length === 0){
-      throw 'No prescriptions by this doctor';
-    }
-    return doctorPrescriptions
-  }
 }
 
 exports.Chain = Blockchain;
