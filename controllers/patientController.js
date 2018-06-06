@@ -24,7 +24,7 @@ router.post('/patient/new_registration', function (req, res, next) {
   }
   else {
     console.log("INVALID PATIENT LOGIN");
-    res.redirect('/patient/new_registration');
+    res.redirect('/');
   }
 
 });
