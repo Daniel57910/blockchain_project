@@ -34,7 +34,8 @@ app.post('/home', function (req, res) {
   res.render('index');
 });
 
-app.get('/add_prescription', function (req, res) {
+app.get('/add_prescription', function (req, res, next) {
+  console.log(req.session)
   res.render('add_prescription');
 });
 
