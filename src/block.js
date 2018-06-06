@@ -2,19 +2,17 @@ const ENCRYPT = require('crypto-js/sha512');
 const DATEFORMAT = require("dateformat");
 
 class Block {
-  constructor(patientName, doctorName, prescription, previousHash = "") {
+  constructor(prescription, previousHash = "") {
     this.index = 1;
-    this.timestamp = this.currentDate();
-    this.patientName = patientName;
-    this.doctorName = doctorName;
+    this.timestamp = currentDate();
     this.prescription = prescription;
     this.previousHash = previousHash;
-    this.hash = this.calculateHash();
-    this.nonce = 0
+    this.hash = previousHash;
+    this.nonce = 0;
   }
 
   calculateHash() {
-    return ENCRYPT(this.index + this.timestamp + JSON.stringify([this.patientName, this.doctorName, this.prescription]) + this.previousHash + this.nonce).toString();
+    return ENCRYPT(this.index + this.timestamp + JSON.stringify(this.prescription) + this.previousHash + this.nonce).toString();
   }
 
   mineBlock(difficulty) {
@@ -22,14 +20,17 @@ class Block {
              this.nonce++;
              this.hash = this.calculateHash();
              console.log(this.hash)
+
+      this.nonce++;
+      this.hash = this.calculateHash();
+
     }
   }
 
-  currentDate() {
-    return DATEFORMAT(new Date(), "isoDateTime");
-  }
+}
+
+function currentDate() {
+  return DATEFORMAT(new Date(), "isoDateTime");
 }
 
 exports.Block = Block;
-
-exports.productionBlock = new Block();
