@@ -36,4 +36,10 @@ beforeEach(function() {
   it('finds the patient prescriptions', function() {
     expect(testFinder.findPatientPrescriptions(testBlockchain, 'Sam')).toEqual([testPrescription]);
   });
+
+  it('throws an error when there is no prescriptions for the patient', function(){
+    expect(function() {
+      testFinder.findPatientPrescriptions(testBlockchain, "John Doe");
+    }).toThrow("No prescriptions for this patient name");
+  });
 });
