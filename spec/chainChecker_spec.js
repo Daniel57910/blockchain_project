@@ -34,4 +34,11 @@ describe('chainChecker tests', function(){
         chainchecker.integrityChecker(chain);
       }).toThrow("Chain is invalid");
     })
+
+    it('throw an error if block hash does not meet difficulty criteria', function(){
+      block2.hash = 'wrong hash'
+      expect(function() {
+        chainchecker.integrityChecker(chain);
+      }).toThrow("Chain is invalid");
+    })
 })
