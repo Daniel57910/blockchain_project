@@ -42,7 +42,6 @@ describe('chain creation', function () {
   });
 
 
-
   it('creates first block', function() {
     expect(chain.createFirstBlock()).toEqual(chain.chain[0]);
   });

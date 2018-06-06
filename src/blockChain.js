@@ -22,22 +22,6 @@ class Blockchain {
     this.chain.push(newBlock);
   }
 
-  integrityChecker() {
-    for(let i = 1; i < this.chain.length; i++){
-        const currentBlock = this.chain[i];
-        const previousBlock = this.chain[i - 1];
-
-        if(currentBlock.hash !== currentBlock.calculateHash()){
-            throw 'Chain is invalid';
-        }
-
-        if(currentBlock.previousHash !== previousBlock.hash){
-            throw 'Chain is invalid';
-        }
-    }
-    return true;
-  }
-
   findPatientPrescriptions(patientName) {
     var prescriptions = []
     for(let i = 1; i < this.chain.length; i++){

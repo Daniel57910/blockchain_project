@@ -1,10 +1,7 @@
 let Block = require('../src/block.js');
 let Chain = require("../src/blockChain.js");
+let ChainChecker = require("../src/chainChecker.js");
 let Prescription = require("../src/prescription.js");
-prescription1 = new Prescription("Sam", "Daniel", "Ibruprofen");
-prescription2 = new Prescription("Gadiza", "Patryk", "Paracetamol");
-console.log(prescription1);
-console.log(prescription2);
 const DATEFORMAT = require("dateformat");
 
 describe('integration testing', function() {
@@ -16,6 +13,7 @@ describe('integration testing', function() {
     testBlock2 = new Block.Block(prescription2);
     baseTime = DATEFORMAT(new Date(), "isoDateTime");
     chain = new Chain.Chain();
+    chainchecker = new ChainChecker.Chainchecker();
     chain.addBlock(testBlock);
     chain.addBlock(testBlock2);
   });
@@ -26,17 +24,17 @@ describe('integration testing', function() {
     });
   });
 
-  describe('block integrity', function() {
+  describe('chain integrity', function() {
 
     it('returns true if chain is valid', function() {
-      expect(chain.integrityChecker()).toBe(true);
+      expect(chainchecker.integrityChecker(chain)).toBe(true);
     });
 
     it('throws error if chain is invalid', function() {
       testBlock.prescription.doctorName = "Patryk";
       testBlock.hash = testBlock.calculateHash();
       expect(function() {
-        chain.integrityChecker();
+        chainchecker.integrityChecker(chain);
       }).toThrow("Chain is invalid");
     });
   });
@@ -63,6 +61,7 @@ describe('integration testing', function() {
       }).toThrow("No prescriptions by this doctor");
     });
   });
+  
   describe('mining test', function(){
     beforeEach(function(){
       difficultBlock = new Block.Block(prescription1);
