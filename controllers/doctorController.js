@@ -23,6 +23,32 @@ router.get('/sign-in-doctor', function(req, res) {
   res.render('../views/doctor_views/sign_in_doctor');
 });
 
+router.post('/doctor_logged', function (req, res, next) {
+  if (req.body.fullName && req.body.password) {
+    doctorSchema.authenticate(req.body.fullName, req.body.password, function(error, doctor) {
+      if (error || !doctor) {
+        var err = new Error('Wrong name and/or password')
+        return next(err);
+      } else{
+        req.session.doctorId = doctor._id;
+        return res.redirect('/add_prescription');
+      }
+    })
+    // return next(err);
+  }
+})
+
+
+router.post('/doctor_signed', function (req, res, next) {
+  if (req.body.password !== req.body.confirm_password) {
+    var err = 'Password not confirmed do not match.'
+    return next(err);
+  }
+  if (req.body.fullName &&
+     req.body.ID &&
+     req.body.password &&
+     req.body.confirm_password) {
+    
 router.post('/doctor_logged_in', function(req, res) {
   console.log(req.body);
   doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) { logDoctorIn(obj);} );
@@ -40,8 +66,23 @@ function saveDoctor(req) {
   savedDoctor = new doctorSchema({
     fullName: req.body.fullName,
     doctorID: req.body.ID,
-    password: req.body.password
+    password: req.body.password,
   });
+  savedDoctor.save(function(err, doctor) {
+    if (err) {
+      var err = 'User already exist'
+      return next(err);
+    }
+    else {
+    console.log("SAVED\n" + savedDoctor);
+    req.session.doctorID = doctor._id;
+    res.redirect('/add_prescription');
+  };
+});
+}
+});
+
+module.exports = router;
   savedDoctor.save(function (err, res) {
     if (err) throw "ERR";
     console.log("SAVED\n" + savedDoctor);

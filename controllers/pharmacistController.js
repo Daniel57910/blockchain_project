@@ -17,6 +17,9 @@ router.get('/sign-in-pharmacist', function (req, res) {
   res.render('pharmacist_views/sign_in_pharmacist');
 });
 
+
+module.exports = router;
+
 router.post('/pharmacist_signed', function (req, res) {
   savePharmacist(req);
   res.redirect('/');
@@ -35,3 +38,4 @@ function savePharmacist(req) {
 }
 
 module.exports = router;
+
