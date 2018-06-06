@@ -1,7 +1,7 @@
-** Final Project Medical Prescription BlockChain **
+** Final Project: Medical Prescriptions BlockChain **
 ==================================================
 
-Purpose of this project is to learn how a blockchain works and to demonstrate this with a simple web-application
+The purpose of this project is to learn how a blockchain works and then use this information to build a secure, documented application to produce, monitor and issue drug prescriptions to patients.
 
 Repository
 -------
@@ -52,7 +52,8 @@ Technologies
 
 Run project
 -----
-* install Node.js if not done so already
-* run ```npm install``` to install all the dependencies
-* for testing run ```npm test```
-* run ```node app.js``` to serve the application, go to ```localhost:9000``` in your browser
+* Clone this repo into a folder of your choice using "CLONE COMMAND HERE"
+* Install Node.js (if you haven't already)
+* Run ```npm install``` to install all the dependencies
+* For testing, run ```npm test```
+* Run ```node app.js``` to serve the application, go to ```localhost:9000``` in your browser

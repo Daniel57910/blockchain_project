@@ -1,0 +1,5 @@
+const prescription = require("./src/prescription.js")
+const block = require("./src/block.js")
+
+pres = new prescription("Sam", "Daniel", "medicine")
+newBlock = new block.Block(1)

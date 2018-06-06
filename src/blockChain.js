@@ -1,4 +1,5 @@
 const block = require("./block.js");
+const prescription = require("./prescription.js");
 
 class Blockchain {
   constructor() {
@@ -7,7 +8,7 @@ class Blockchain {
   }
 
   createFirstBlock() {
-    return new block.Block('Genesis_Patient', 'Genesis_Doctor', 'Genesis_Prescription');
+    return new block.Block(new prescription("Genesis Patient","Genesis PatientID", "Genesis Doctor", "Genesis DoctorID", "Genesis Prescription"));
   }
 
   findLastBlock() {
@@ -40,8 +41,8 @@ class Blockchain {
   findPatientPrescriptions(patientName) {
     var prescriptions = []
     for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i];
-      if(currentBlock.patientName === patientName){
+      var currentBlock = this.chain[i].prescription;
+      if(currentBlock.patient.name === patientName){
         prescriptions.push(currentBlock);
       }
     }
@@ -54,8 +55,8 @@ class Blockchain {
   findDoctorPrescriptions(doctorName) {
     var doctorPrescriptions = []
     for(let i = 1; i < this.chain.length; i++){
-      var currentBlock = this.chain[i];
-      if(currentBlock.doctorName === doctorName){
+      var currentBlock = this.chain[i].prescription;
+      if(currentBlock.doctor.name === doctorName){
         doctorPrescriptions.push(currentBlock);
       }
     }
