@@ -19,6 +19,7 @@ describe('integration testing', function() {
   });
 
   describe('chain creation', function() {
+
     it("assign previous hash to the new block", function(){
       expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
     });
@@ -63,11 +64,13 @@ describe('integration testing', function() {
   });
 
   describe('mining test', function(){
+
     beforeEach(function(){
       difficultBlock = new Block.Block(prescription1);
       chain.difficulty = 3;
       chain.addBlock(difficultBlock);
     });
+
     it('hash has three zeros at the begining', function(){
       expect(chain.chain[3].hash.substring(0, 3)).toEqual('000');
     });
