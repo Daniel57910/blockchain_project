@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 router.get('/doctor/add_prescription', function (req, res) {
-  res.render('add_prescription');
+  res.render('add_prescription')
 });
 
 router.post('/prescription_confirmation', function(req, res){
@@ -19,7 +19,11 @@ router.post('/prescription_confirmation', function(req, res){
   let newBlock = new Block.Block(req.body.patientName, req.body.doctorName, req.body.prescription);
   chain.addBlock(newBlock);
   console.log(chain);
-  res.render('prescription_stored');
+  res.redirect('/prescriptions/show')
 });
-
+  router.get('/prescriptions/show', function(req, res){
+    // let formatted_chain = chain.join("\n")
+    console.log(chain)
+  res.render('prescription_stored')
+});
 module.exports = router;
