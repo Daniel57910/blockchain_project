@@ -56,11 +56,6 @@ describe('chain creation', function () {
     expect(chain.findLastBlock()).toEqual(block);
   });
 
-  it('finds the patient prescriptions',function(){
-    chain.addBlock(block);
-    expect(chain.findPatientPrescriptions("Sam")).toEqual([prescription]);
-  });
-
   it('finds prescriptions issued by the doctor', function(){
     chain.addBlock(block);
     expect(chain.findDoctorPrescriptions("Daniel")).toEqual([prescription]);
