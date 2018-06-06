@@ -19,7 +19,7 @@ router.post('/doctor/sign_in/:id', function (req, res, next) {
   if (req.body.fullName && req.body.password) {
     doctorSchema.authenticate(req.body.fullName, req.body.password, function(error, doctor) {
       if (error || !doctor) {
-        var err = new Error('Wrong name and/or password')
+        var err = new Error('Wrong name and/or password');
         return next(err);
       } else{
         req.session.doctorId = doctor._id;
@@ -34,7 +34,7 @@ router.post('/doctor/sign_in/:id', function (req, res, next) {
 router.post('/doctor/new_registration/', function (req, res, next) {
   console.log("CHECKING ROUTE");
   if (req.body.password !== req.body.confirm_password) {
-    var err = 'Password not confirmed do not match.'
+    var err = 'Password not confirmed do not match.';
     return next(err);
   }
   if (req.body.fullName && req.body.ID && req.body.password && req.body.confirm_password) {
