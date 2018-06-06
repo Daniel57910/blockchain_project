@@ -6,9 +6,8 @@ describe('creating a new patient correctly', function () {
     patient = new Patient("Jim", "123456");
   });
 
-  it("assigns the doctor a name, ID and password on initialization", function () {
+  it("assigns the doctor a name and ID on initialization", function () {
     expect(patient.name).toEqual("Jim");
     expect(patient.ID).toEqual("123456");
   });
-
 });

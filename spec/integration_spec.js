@@ -61,7 +61,7 @@ describe('integration testing', function() {
       }).toThrow("No prescriptions by this doctor");
     });
   });
-  
+
   describe('mining test', function(){
     beforeEach(function(){
       difficultBlock = new Block.Block(prescription1);

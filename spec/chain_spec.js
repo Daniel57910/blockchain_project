@@ -34,7 +34,7 @@ describe('chain creation', function () {
     };
     Block.prototype.mineBlock = function(difficulty) {
       this.hash = this.calculateHash();
-      };
+    };
     patient = new Patient();
     doctor = new Doctor();
     prescription = new Prescription(patient, doctor);
