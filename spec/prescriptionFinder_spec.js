@@ -42,4 +42,8 @@ beforeEach(function() {
       testFinder.findPatientPrescriptions(testBlockchain, "John Doe");
     }).toThrow("No prescriptions for this patient name");
   });
+
+  it('finds prescriptions issued by the doctor', function(){
+    expect(testFinder.findDoctorPrescriptions(testBlockchain, "Daniel")).toEqual([testPrescription]);
+  });
 });
