@@ -41,4 +41,8 @@ describe('chainChecker tests', function(){
         chainchecker.integrityChecker(chain);
       }).toThrow("Chain is invalid");
     })
+
+    it('returns true if blocks in a chain meet all the criteria', function(){
+      expect(chainchecker.integrityChecker(chain)).toEqual(true)
+    })
 })
