@@ -56,17 +56,6 @@ describe('chain creation', function () {
     expect(chain.findLastBlock()).toEqual(block);
   });
 
-  it('finds prescriptions issued by the doctor', function(){
-    chain.addBlock(block);
-    expect(chain.findDoctorPrescriptions("Daniel")).toEqual([prescription]);
-  });
-
-  it('throws an error when there is no prescriptions for the patient', function(){
-    expect(function() {
-      chain.findPatientPrescriptions("John Doe");
-    }).toThrow("No prescriptions for this patient name");
-  });
-
   it('throws an error when there is no prescriptions by the doctor', function(){
     expect(function() {
       chain.findDoctorPrescriptions("John Doe");
