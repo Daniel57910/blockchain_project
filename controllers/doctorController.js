@@ -39,31 +39,32 @@ router.post('/doctor_logged', function (req, res, next) {
     // return next(err);
   }
 })
-//
-//
-// router.post('/doctor_signed', function (req, res, next) {
-//   if (req.body.password !== req.body.confirm_password) {
-//     var err = 'Password not confirmed do not match.'
-//     return next(err);
-//   }
-//   if (req.body.fullName &&
-//      req.body.ID &&
-//      req.body.password &&
-//      req.body.confirm_password) {
-//
+
+
+router.post('/doctor_signed', function (req, res, next) {
+  if (req.body.password !== req.body.confirm_password) {
+    var err = 'Password not confirmed do not match.'
+    return next(err);
+  }
+  if (req.body.fullName &&
+     req.body.ID &&
+     req.body.password &&
+     req.body.confirm_password) {
+
 // router.post('/doctor_logged_in', function(req, res) {
 //   console.log(req.body);
-//   doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) { logDoctorIn(obj);} );
-//   res.redirect('/add_prescription');
-// });
-//
-//
-//
-//
-// function logDoctorIn(obj) {
-//   loggedInDoctor = new loggedInDoctor(obj.fullName, obj.doctorID, obj.password);
-//   console.log("logged in doctor is \n" + loggedInDoctor.name + " " + loggedInDoctor.ID + " " + loggedInDoctor.password);
-// }
+  doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) { logDoctorIn(obj);} );
+}
+  res.redirect('/add_prescription');
+});
+
+
+
+
+function logDoctorIn(obj) {
+  loggedInDoctor = new loggedInDoctor(obj.fullName, obj.doctorID, obj.password);
+  console.log("logged in doctor is \n" + loggedInDoctor.name + " " + loggedInDoctor.ID + " " + loggedInDoctor.password);
+}
 //
 // function saveDoctor(req) {
 //   savedDoctor = new doctorSchema({
