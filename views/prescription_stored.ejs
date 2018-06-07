@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-
-
-
 </head>
+
 <body>
   <br>
   <br>
-
-<title> Medical Prescription Blockchain Application </title>
+  <title> Medical Prescription Blockchain Application </title>
 
   <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Prescription On Chain </h1>
 
-  <ul>
-  <%prescriptions.forEach(function(prescription) { %>
-    <li> Doctor: <%= prescription.doctor.name %> Patient: <%= prescription.patient.name %> Prescription: <%= prescription.prescription %> </li>
-  <% }); %>
-  </ul>
+  <!-- Trigger/Open The Modal -->
+  <button id="prescriptionButton">Prescription Block</button>
 
-  <br>
-  <ul>
-    <div class="container">
-      <div class="row">
-  <form class="form-horizontal"  method="get" action="/doctor/add_prescription">
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="get" action='/' class="btn btn-default">Other Prescription</button>
-    </div>
-  </div>
-</form>
-<!-- needs to destroy session -->
-  <form class="form-horizontal"  method="get" action="/">
-  <div class="form-group" method="get" action="/">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="get" action='/' class="btn btn-default">Log Out</button>
-    </div>
-  </div>
-</form>
+  <!-- The Modal -->
+  <div id="prescriptionModal" class="modal">
 
+    <!-- Modal Content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Precription Block</h2>
+      </div>
+      <div class ="modal-body">
+        <%prescriptions.forEach(function(prescription) { %>
+          <p class="block-text"> Doctor: <%= prescription.doctor.name %> Patient: <%= prescription.patient.name %> Prescription: <%= prescription.prescription %> </p>
+          <% }); %>
+        </div>
+        <div class="modal-footer">
+          <h3>Isn't blockchain fun!</h3>
+        </div>
+      </div>
 
-</div>
-</div>
+      <br>
+      <ul>
+        <div class="container">
+          <div class="row">
+            <form class="form-horizontal"  method="get" action="/doctor/add_prescription">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" method="get" action='/' class="btn btn-default">Other Prescription</button>
+                </div>
+              </div>
+            </form>
 
+            <!-- needs to destroy session -->
+            <form class="form-horizontal"  method="get" action="/">
+              <div class="form-group" method="get" action="/">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" method="get" action='/' class="btn btn-default">Log Out</button>
+                </div>
+              </div>
+            </form>
 
-</body>
-  </html>
+          </div>
+        </div>
+
+      </body>
+      </html>
