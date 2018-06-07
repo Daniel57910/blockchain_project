@@ -52,6 +52,7 @@ function saveDoctor(req) {
     else {
     console.log("SAVED\n" + savedDoctor);
     req.session.doctorID = doctor._id;
+    console.log(req.session);
     }
   });
 }
@@ -78,7 +79,7 @@ function authenticateDoctor(req, res) {
       returnToDoctorSignUp(req, res);
     } 
     else {
-      successfullDoctorSignUp(req, res);
+      successfullDoctorSignUp(req, res, doctor);
     }
   });
 }
@@ -93,8 +94,9 @@ function returnToDoctorRegistration(req, res) {
   res.redirect('/doctor/new_registration');
 }
 
-function successfullDoctorSignUp(req, res) {
-  req.session.doctorId = req.body.id;
+function successfullDoctorSignUp(req, res, doctor) {
+  req.session.doctorId = doctor._id;
+  console.log(req.session);
   res.redirect('/doctor/add_prescription');
 }
 
