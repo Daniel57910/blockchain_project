@@ -17,6 +17,12 @@
 
   <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Prescription Stored </h1>
 
+  <ul>
+  <%prescriptions.forEach(function(prescription) { %>
+    <li> <%= prescription %> </li>
+  <% }); %>
+  </ul>
+
   <br>
   <ul>
     <div class="container">
