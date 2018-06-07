@@ -30,7 +30,9 @@ router.post('/doctor/new_registration/', function (req, res, next) {
   }
   else {
     loginNewDoctor(req);
+    req.session.doctorLoggedIn = true;
     res.redirect('/doctor/add_prescription');
+    
   }
 });
 

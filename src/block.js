@@ -7,7 +7,7 @@ class Block {
     this.timestamp = currentDate();
     this.prescription = prescription;
     this.previousHash = previousHash;
-    this.hash = previousHash;
+    this.hash = this.calculateHash();
     this.nonce = 0;
   }
 
