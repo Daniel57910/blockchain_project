@@ -7,12 +7,12 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/doctor/new_registration', function (req, res) {
+router.get('/doctor/new_registration', function (req, res, next) {
   res.render('../views/doctor_views/sign_up_doctor');
 });
 
-router.get('/doctor/sign_in', function(req, res) {
-  res.render('../views/doctor_views/sign_in_doctor');
+router.get('/doctor/sign_in', function(req, res, next) {
+  res.render('../views/doctor_views/sign_in_doctor', {incorrectSignIn: req.flash('signUpError')});
 });
 
 router.post('/doctor/sign_in/:id', function (req, res, next) {
@@ -21,7 +21,8 @@ router.post('/doctor/sign_in/:id', function (req, res, next) {
   }
   else {
     console.log("error with doctor sign_in");
-    res.redirect('/');
+    req.flash('signUpError', "Error With Doctor Signing In");
+    res.redirect('/doctor/sign_in');
   }
 });
 
@@ -60,6 +61,7 @@ function saveDoctor(req) {
 }
 
 function validSignIn(req) {
+  console.log((req.body.fullName && req.body.password));
   return (req.body.fullName && req.body.password);
 }
 
