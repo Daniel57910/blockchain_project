@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var patientSchema = require('../models/patientModel.js');
+var prescriptionFinder = require('../src/prescriptionFinder.js');
 
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({
@@ -29,7 +30,7 @@ router.post('/patient/new_registration', function (req, res, next) {
 
 });
 
-router.get('/patient/sign_in', function (req, res) {
+router.get('/patient/sign_in', function (req, res, next) {
   res.render('../views/patient_views/sign_in_patient');
 });
 
@@ -51,8 +52,10 @@ router.post('/patient/sign_in/:id', function(req, res, next) {
 });
 
 router.get('/patient/prescriptions', function(req, res, next) {
+  console.log("PATIENT PRESCRIPTIONS");
+  blockchain = req.session.chain.chain;
+  console.log(blockchain);
   res.send('Hello');
-
 });
 
 

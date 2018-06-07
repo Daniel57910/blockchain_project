@@ -81,6 +81,7 @@ function authenticateDoctor(req, res) {
       returnToDoctorSignUp(req, res);
     } 
     else {
+      req.session.doctorLoggedIn = true;
       successfullDoctorSignUp(req, res, doctor);
     }
   });
