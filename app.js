@@ -7,7 +7,7 @@ var doctorController = require('./controllers/doctorController');
 var patientController = require('./controllers/patientController');
 var pharmacistController = require('./controllers/pharmacistController');
 var session = require('express-session');
-
+var prescriptionController = require('./controllers/prescriptionController');
 var chain = new Chain.Chain();
 app.set('view engine', 'ejs');
 app.use(dependencies.bodyParser.urlencoded({ extended: true }));
@@ -21,8 +21,7 @@ app.use(session({
 app.use('/', doctorController);
 app.use('/', patientController);
 app.use('/', pharmacistController);
-
-
+app.use('/', prescriptionController);
 var chain = new Chain.Chain();
 dependencies.connectToDatabase(env);
 
@@ -34,6 +33,7 @@ app.post('/home', function (req, res) {
   res.render('index');
 });
 
+<<<<<<< HEAD
 app.get('/add_prescription', function (req, res, next) {
   console.log(req.session)
   res.render('add_prescription');
@@ -46,4 +46,6 @@ app.post('/prescription_confirmation', function(req, res){
 });
 
 
+=======
+>>>>>>> 605d0281135fec34caf60cff396c2ea8dc8cc7ce
 module.exports = app;
