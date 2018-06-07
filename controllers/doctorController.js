@@ -7,10 +7,6 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/doctor/new_registration', function (req, res, next) {
-  res.render('../views/doctor_views/sign_up_doctor');
-});
-
 router.get('/doctor/sign_in', function(req, res, next) {
   res.render('../views/doctor_views/sign_in_doctor', {incorrectSignIn: req.flash('signUpError')});
 });
@@ -24,19 +20,21 @@ router.post('/doctor/sign_in/:id', function (req, res, next) {
   }
 });
 
+router.get('/doctor/new_registration', function (req, res, next) {
+  res.render('../views/doctor_views/sign_up_doctor', {incorrectRegistration: req.flash('registrationError')});
+});
+
 router.post('/doctor/new_registration/', function (req, res, next) {
   console.log("CHECKING ROUTE");
-  if (req.body.password !== req.body.confirm_password) {
-    var err = 'Password not confirmed do not match.';
-    return next(err);
+  if (passwordsDontMatch(req)) {
+    returnToDoctorRegistration(req, res);
   }
-  if (req.body.fullName && req.body.ID && req.body.password && req.body.confirm_password) {
+  if (req.body.fullName && req.body.ID && req.body.password) {
     doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) {saveDoctor(req);} );
     res.redirect('/doctor/add_prescription');
   }
   else {
-    console.log("INVALID LOGIN");
-    res.redirect('/doctor/new_registration');
+    returnToDoctorRegistration(req, res);
   }
 });
 
@@ -56,6 +54,10 @@ function saveDoctor(req) {
     req.session.doctorID = doctor._id;
     }
   });
+}
+
+function passwordsDontMatch(req) {
+  return (req.body.password !== req.body.confirm_password);
 }
 
 function validSignIn(req) {
@@ -83,9 +85,16 @@ function returnToDoctorSignUp(req, res) {
   res.redirect('/doctor/sign_in');
 }
 
+function returnToDoctorRegistration(req, res) {
+  req.flash('registrationError', "Error with doctor registration, ensure all elements of form filled in correctly.");
+  res.redirect('/doctor/new_registration');
+}
+
 function successfullDoctorSignUp(req) {
   req.session.doctorId = doctor._id;
   res.redirect('/doctor/add_prescription');
 }
+
+
 
 module.exports = router;
