@@ -20,9 +20,7 @@ router.post('/doctor/sign_in/:id', function (req, res, next) {
     authenticateDoctor(req);
   }
   else {
-    console.log("error with doctor sign_in");
-    req.flash('signUpError', "Error With Doctor Signing In");
-    res.redirect('/doctor/sign_in');
+    returnToDoctorSignUp(req, res);
   }
 });
 
@@ -61,7 +59,6 @@ function saveDoctor(req) {
 }
 
 function validSignIn(req) {
-  console.log((req.body.fullName && req.body.password));
   return (req.body.fullName && req.body.password);
 }
 
@@ -70,17 +67,25 @@ function authenticationErrors(err, doctor) {
 }
 
 function authenticateDoctor(req) {
+
   doctorSchema.authenticate(req.body.fullName, req.body.password, function (error, doctor) {
-  if (authenticationErrors(error, doctor)) {
-    var err = new Error('Wrong name and/or password');
-    res.redirect('/');
-  } 
-  else {
-    req.session.doctorId = doctor._id;
-    console.log(req.session.doctorID);
-    return res.redirect('/doctor/add_prescription');
-  }
-});
+    if (authenticationErrors(error, doctor)) {
+      returnToDoctorSignUp(req, res);
+    } 
+    else {
+      successfullDoctorSignUp(req);
+    }
+  });
+}
+
+function returnToDoctorSignUp(req, res) {
+  req.flash('signUpError', "Error With Doctor Signing In");
+  res.redirect('/doctor/sign_in');
+}
+
+function successfullDoctorSignUp(req) {
+  req.session.doctorId = doctor._id;
+  res.redirect('/doctor/add_prescription');
 }
 
 module.exports = router;
