@@ -10,10 +10,10 @@ router.use(bodyParser.urlencoded({
 
 router.use(bodyParser.json());
 
-router.get('/sign-up-pharmacist', function (req, res) {
+router.get('/pharmacist/new_registration', function (req, res) {
   res.render('pharmacist_views/sign_up_pharmacist');
 });
-router.get('/sign-in-pharmacist', function (req, res) {
+router.get('/pharmacist/sign_in', function (req, res) {
   res.render('pharmacist_views/sign_in_pharmacist');
 });
 
@@ -38,4 +38,3 @@ function savePharmacist(req) {
 }
 
 module.exports = router;
-
