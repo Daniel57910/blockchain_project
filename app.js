@@ -33,7 +33,6 @@ app.post('/home', function (req, res) {
   res.render('index');
 });
 
-<<<<<<< HEAD
 app.get('/add_prescription', function (req, res, next) {
   console.log(req.session)
   res.render('add_prescription');
@@ -45,7 +44,4 @@ app.post('/prescription_confirmation', function(req, res){
   res.render('prescription_stored');
 });
 
-
-=======
->>>>>>> 605d0281135fec34caf60cff396c2ea8dc8cc7ce
 module.exports = app;
