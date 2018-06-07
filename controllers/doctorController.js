@@ -7,45 +7,36 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/doctor/new_registration', function (req, res) {
-  res.render('../views/doctor_views/sign_up_doctor');
-});
-
-router.get('/doctor/sign_in', function(req, res) {
-  res.render('../views/doctor_views/sign_in_doctor');
+router.get('/doctor/sign_in', function(req, res, next) {
+  res.render('../views/doctor_views/sign_in_doctor', {incorrectSignIn: req.flash('signUpError')});
 });
 
 router.post('/doctor/sign_in/:id', function (req, res, next) {
-  if (req.body.fullName && req.body.password) {
-    doctorSchema.authenticate(req.body.fullName, req.body.password, function(error, doctor) {
-      if (error || !doctor) {
-        var err = new Error('Wrong name and/or password');
-        return next(err);
-      } else{
-        req.session.doctorId = doctor._id;
-        console.log(req.session.doctorID);
-        return res.redirect('/doctor/add_prescription');
-      }
-    });
-
+  if (validSignIn(req)) {
+    authenticateDoctor(req, res);
   }
+  else {
+    returnToDoctorSignUp(req, res);
+  }
+});
+
+router.get('/doctor/new_registration', function (req, res, next) {
+  res.render('../views/doctor_views/sign_up_doctor', {incorrectRegistration: req.flash('registrationError')});
 });
 
 router.post('/doctor/new_registration/', function (req, res, next) {
-  console.log("CHECKING ROUTE");
-  if (req.body.password !== req.body.confirm_password) {
-    var err = 'Password not confirmed do not match.';
-    return next(err);
-  }
-  if (req.body.fullName && req.body.ID && req.body.password && req.body.confirm_password) {
-    doctorSchema.findOne({fullName: req.body.fullName, password: req.body.password}, function(err, obj) {saveDoctor(req);} );
-    res.redirect('/doctor/add_prescription');
+  if (passwordsDontMatch(req) || !(correctRegistrationCredentials(req))) {
+    returnToDoctorRegistration(req, res);
   }
   else {
-    console.log("INVALID LOGIN");
-    res.redirect('/doctor/new_registration');
+    loginNewDoctor(req);
+    res.redirect('/doctor/add_prescription');
   }
 });
+
+function loginNewDoctor(req) {
+  doctorSchema.findOne({ fullName: req.body.fullName, password: req.body.password}, function (err, obj) { saveDoctor(req);});
+}
 
 function saveDoctor(req) {
   savedDoctor = new doctorSchema({
@@ -57,13 +48,58 @@ function saveDoctor(req) {
     if (err) {
       var error = 'User already exist';
       console.log(error);
-
     }
     else {
     console.log("SAVED\n" + savedDoctor);
     req.session.doctorID = doctor._id;
+    console.log(req.session);
     }
   });
 }
+
+function passwordsDontMatch(req) {
+  return (req.body.password !== req.body.confirm_password);
+}
+
+function validSignIn(req) {
+  return (req.body.fullName && req.body.password);
+}
+
+function correctRegistrationCredentials(req) {
+  return(req.body.fullName && req.body.ID && req.body.password);
+}
+
+function authenticationErrors(error, doctor) {
+  return (error || !doctor);
+}
+
+function authenticateDoctor(req, res) {
+  doctorSchema.authenticate(req.body.fullName, req.body.password, function (error, doctor) {
+    if (authenticationErrors(error, doctor)) {
+      returnToDoctorSignUp(req, res);
+    } 
+    else {
+      successfullDoctorSignUp(req, res, doctor);
+    }
+  });
+}
+
+function returnToDoctorSignUp(req, res) {
+  req.flash('signUpError', "Error With Doctor Signing In");
+  res.redirect('/doctor/sign_in');
+}
+
+function returnToDoctorRegistration(req, res) {
+  req.flash('registrationError', "Error with doctor registration, ensure all elements of form filled in correctly.");
+  res.redirect('/doctor/new_registration');
+}
+
+function successfullDoctorSignUp(req, res, doctor) {
+  req.session.doctorId = doctor._id;
+  console.log(req.session);
+  res.redirect('/doctor/add_prescription');
+}
+
+
 
 module.exports = router;
