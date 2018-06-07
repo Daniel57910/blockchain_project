@@ -20,11 +20,11 @@ router.post('/patient/new_registration', function (req, res, next) {
 
   if (req.body.userName && req.body.dob && req.body.password) {
     patientSchema.findOne({userName: req.body.userName, password: req.body.password}, function(err, obj) {savePatient(req);});
-    res.redirect('/');
+    res.redirect('/patient/prescriptions/');
   }
   else {
     console.log("INVALID PATIENT LOGIN");
-    res.redirect('/');
+    res.redirect('/patient/new_registration/');
   }
 
 });
@@ -43,11 +43,15 @@ router.post('/patient/sign_in/:id', function(req, res, next) {
       else {
         req.session.patientUserName = patient.userName;
         console.log(req.session.patientUserName);
-        res.redirect('/');
+        res.redirect('/patient/prescriptions');
       }
 
     });
   }
+});
+
+router.get('/patient/prescriptions', function(req, res, next) {
+  res.send('Hello');
 
 });
 

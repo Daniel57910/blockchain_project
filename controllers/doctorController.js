@@ -32,7 +32,6 @@ router.post('/doctor/new_registration/', function (req, res, next) {
     loginNewDoctor(req);
     req.session.doctorLoggedIn = true;
     res.redirect('/doctor/add_prescription');
-    
   }
 });
 
@@ -50,6 +49,7 @@ function saveDoctor(req) {
     if (err) {
       var error = 'User already exist';
       console.log(error);
+      res.redirect('/');
     }
     else {
     console.log("SAVED\n" + savedDoctor);
@@ -101,7 +101,5 @@ function successfullDoctorSignUp(req, res, doctor) {
   console.log(req.session);
   res.redirect('/doctor/add_prescription');
 }
-
-
 
 module.exports = router;
