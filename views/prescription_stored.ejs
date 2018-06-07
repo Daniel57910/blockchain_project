@@ -15,11 +15,11 @@
 
 <title> Medical Prescription Blockchain Application </title>
 
-  <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Prescription Stored </h1>
+  <h1> <i class="fa fa-heartbeat" style="font-size:48px;color:red"></i> Prescription On Chain </h1>
 
   <ul>
   <%prescriptions.forEach(function(prescription) { %>
-    <li> <%= prescription %> </li>
+    <li> Doctor: <%= prescription.doctor.name %> Patient: <%= prescription.patient.name %> Prescription: <%= prescription.prescription %> </li>
   <% }); %>
   </ul>
 

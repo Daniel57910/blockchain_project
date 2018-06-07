@@ -28,9 +28,6 @@ router.post('/prescriptions/confirmation', function (req, res) {
 router.get('/prescriptions/show', function (req, res, next) {
   formattedChain = req.session.chain.chain;
   data = formattedChain.map(data => data.prescription);
-  console.log(data);
-  data = data.map(data => data.doctor.name + " " + data.patient.name + " " + data.prescription);
-  console.log(data);
   res.render('prescription_stored', { prescriptions: data, test: "test"});
 });
 
