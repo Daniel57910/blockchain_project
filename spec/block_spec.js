@@ -1,6 +1,5 @@
 let Block = require('../src/block.js');
 const DATEFORMAT = require("dateformat");
-console.log(Block);
 
 describe('block creation', function() {
 

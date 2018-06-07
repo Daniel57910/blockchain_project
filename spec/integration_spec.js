@@ -1,74 +1,78 @@
 let Block = require('../src/block.js');
 let Chain = require("../src/blockChain.js");
+let ChainChecker = require("../src/chainChecker.js");
 let Prescription = require("../src/prescription.js");
-prescription1 = new Prescription("Sam", "Daniel", "Ibruprofen");
-prescription2 = new Prescription("Gadiza", "Patryk", "Paracetamol");
-console.log(prescription1);
-console.log(prescription2);
+let PrescriptionFinder = require("../src/prescriptionFinder.js");
 const DATEFORMAT = require("dateformat");
 
-describe('integration testing', function() {
+describe('Integration Testing: ', function() {
 
   beforeEach(function() {
+    baseTime = DATEFORMAT(new Date(), "isoDateTime");
+    chain = new Chain.Chain();
+    chainchecker = new ChainChecker.Chainchecker();
+    prescriptionfinder = new PrescriptionFinder.Finder();
     prescription1 = new Prescription("Sam", "Gadiza", "Ibruprofen");
     prescription2 = new Prescription("Sam", "Gadiza", "Paracetamol");
     testBlock = new Block.Block(prescription1);
     testBlock2 = new Block.Block(prescription2);
-    baseTime = DATEFORMAT(new Date(), "isoDateTime");
-    chain = new Chain.Chain();
     chain.addBlock(testBlock);
     chain.addBlock(testBlock2);
   });
 
-  describe('chain creation', function() {
+  describe('Chain Creation Functionality: ', function() {
+
     it("assign previous hash to the new block", function(){
       expect(chain.chain[2].previousHash).toEqual(testBlock.hash);
     });
   });
 
-  describe('block integrity', function() {
+  describe('Chain Integrity Checker Functionality: ', function() {
 
     it('returns true if chain is valid', function() {
-      expect(chain.integrityChecker()).toBe(true);
+      expect(chainchecker.integrityChecker(chain)).toBe(true);
     });
 
     it('throws error if chain is invalid', function() {
       testBlock.prescription.doctorName = "Patryk";
       testBlock.hash = testBlock.calculateHash();
       expect(function() {
-        chain.integrityChecker();
+        chainchecker.integrityChecker(chain);
       }).toThrow("Chain is invalid");
     });
   });
 
-  describe('prescription search functionality', function() {
+  describe('Prescription Search Functionality: ', function() {
 
     it('finds patient-specific blocks in the chain', function() {
-      expect(chain.findPatientPrescriptions("Sam")).toEqual([prescription1, prescription2]);
+      expect(prescriptionfinder.findPatientPrescriptions(chain, "Sam")).toEqual([prescription1, prescription2]);
     });
 
     it('throws an error if no prescriptions for the patient', function() {
       expect(function() {
-        chain.findPatientPrescriptions("John Doe");
+        prescriptionfinder.findPatientPrescriptions(chain, "John Doe");
       }).toThrow("No prescriptions for this patient name");
     });
 
     it('finds prescriptions issued by doctors in the chain', function() {
-      expect(chain.findDoctorPrescriptions("Gadiza")).toEqual([prescription1, prescription2]);
+      expect(prescriptionfinder.findDoctorPrescriptions(chain, "Gadiza")).toEqual([prescription1, prescription2]);
     });
 
     it('throws an error if no prescriptions by the doctor', function() {
       expect(function() {
-        chain.findDoctorPrescriptions("John Doe");
+        prescriptionfinder.findDoctorPrescriptions(chain, "John Doe");
       }).toThrow("No prescriptions by this doctor");
     });
   });
-  describe('mining test', function(){
+
+  describe('Block Mining Functionality: ', function(){
+
     beforeEach(function(){
       difficultBlock = new Block.Block(prescription1);
       chain.difficulty = 3;
       chain.addBlock(difficultBlock);
     });
+
     it('hash has three zeros at the begining', function(){
       expect(chain.chain[3].hash.substring(0, 3)).toEqual('000');
     });

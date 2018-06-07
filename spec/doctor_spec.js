@@ -10,5 +10,4 @@ describe('creating a new doctor', function() {
     expect(doctor.name).toEqual("Jim");
     expect(doctor.ID).toEqual("123456");
   });
-
 });
