@@ -26,7 +26,7 @@ app.use('/', prescriptionController);
 dependencies.connectToDatabase(env);
 
 app.get('/', function (req, res) {
-  res.render('home');
+  res.render('home', {doctor_not_logged_in: req.flash('invalid_access')});
 });
 
 module.exports = app;

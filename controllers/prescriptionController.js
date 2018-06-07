@@ -14,7 +14,13 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.get('/doctor/add_prescription', function (req, res, next) {
-  res.render('add_prescription');
+  if (req.session.doctorLoggedIn === true) {
+    res.render('add_prescription');
+  }
+  else {
+    req.flash('invalid_access', "Only Doctors Can Add Prescriptions!");
+    res.redirect('/');
+  }
 });
 
 router.post('/prescriptions/confirmation', function (req, res) {
