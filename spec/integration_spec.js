@@ -12,8 +12,8 @@ describe('Integration Testing: ', function() {
     chain = new Chain.Chain();
     chainchecker = new ChainChecker.Chainchecker();
     prescriptionfinder = new PrescriptionFinder.Finder();
-    prescription1 = new Prescription("Sam", "1", "Gadiza", "2", "Ibruprofen");
-    prescription2 = new Prescription("Sam", "1", "Gadiza", "2", "Paracetamol");
+    prescription1 = new Prescription("Sam", "Gadiza", "Ibruprofen");
+    prescription2 = new Prescription("Sam", "Gadiza", "Paracetamol");
     testBlock = new Block.Block(prescription1);
     testBlock2 = new Block.Block(prescription2);
     chain.addBlock(testBlock);

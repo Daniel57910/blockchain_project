@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var patientSchema = require('../models/patientModel.js');
-var loggedInPatient = require('../src/patient.js');
 
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({
@@ -9,34 +8,51 @@ router.use(bodyParser.urlencoded({
 }));
 router.use(bodyParser.json());
 
-router.get('/sign-up-patient', function (req, res) {
+router.get('/patient/new_registration', function (req, res) {
   res.render('../views/patient_views/sign_up_patient');
 });
 
-router.post('/patient_signed', function (req, res) {
-  savePatient(req);
-  res.redirect('/');
+router.post('/patient/new_registration', function (req, res, next) {
+  if (req.body.password !== req.body.confirm_password) {
+    var err = 'Password not confirmed do not match.';
+    return next(err);
+  }
+
+  if (req.body.userName && req.body.dob && req.body.password) {
+    patientSchema.findOne({userName: req.body.userName, password: req.body.password}, function(err, obj) {savePatient(req);});
+    res.redirect('/');
+  }
+  else {
+    console.log("INVALID PATIENT LOGIN");
+    res.redirect('/');
+  }
+
 });
 
-router.get('/sign-in-patient', function (req, res) {
+router.get('/patient/sign_in', function (req, res) {
   res.render('../views/patient_views/sign_in_patient');
 });
 
-router.post('/patient_logged_in', function(req, res) {
-  console.log(req.body);
-  patientSchema.findOne({userName: req.body.userName, password: req.body.password}, function(err, obj) { logPatientIn(obj);} );
-  res.redirect('/');
+router.post('/patient/sign_in/:id', function(req, res, next) {
+  if (req.body.userName && req.body.password) {
+    patientSchema.authenticate(req.body.userName, req.body.password, function(error, patient) {
+      if (error || !patient) {
+        var err = new Error("Wrong name and/or password");
+        return next(err);
+      }
+      else {
+        req.session.patientUserName = patient.userName;
+        console.log(req.session.patientUserName);
+        res.redirect('/');
+      }
+
+    });
+  }
 
 });
 
 
 module.exports = router;
-
-function logPatientIn(obj) {
-  console.log(obj.userName);
-  loggedInPatient = new loggedInPatient(obj.userName, obj.dob, obj.password);
-  console.log("logged in patient is \n" + loggedInPatient.name + " " + loggedInPatient.ID + " " + loggedInPatient.password);
-}
 
 function savePatient(req) {
   console.log(req);

@@ -21,22 +21,26 @@
   <ul>
     <div class="container">
       <div class="row">
-  <form class="form-horizontal"  method="post" action="/home">
+  <form class="form-horizontal"  method="get" action="/doctor/add_prescription">
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="post" action='/home' class="btn btn-default">Other Prescription</button>
+      <button type="submit" method="get" action='/' class="btn btn-default">Other Prescription</button>
     </div>
   </div>
 </form>
-  <form class="form-horizontal"  method="post" action="/">
+<!-- needs to destroy session -->
+  <form class="form-horizontal"  method="get" action="/">
   <div class="form-group" method="get" action="/">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" method="post" action='/' class="btn btn-default">Log Out</button>
+      <button type="submit" method="get" action='/' class="btn btn-default">Log Out</button>
     </div>
   </div>
 </form>
+
+
 </div>
 </div>
-</ul>
+
+
 </body>
   </html>

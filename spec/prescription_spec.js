@@ -3,7 +3,7 @@ let Prescription = require("../src/prescription.js");
 describe('Creating a new Pharmacist', function() {
 
   beforeEach(function() {
-    prescription = new Prescription("Bob","1", "Jim", "2", "Morphine");
+    prescription = new Prescription("Bob", "Jim", "Morphine");
   });
 
   it("assigns a doctor, a patient, and the drug (or drugs) to the Prescription initialization", function() {
