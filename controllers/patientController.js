@@ -53,9 +53,9 @@ router.post('/patient/sign_in/:id', function(req, res, next) {
 
 router.get('/patient/prescriptions', function(req, res, next) {
   console.log("PATIENT PRESCRIPTIONS");
-  blockchain = req.session.chain.chain;
+  blockchain = req.session.chain;
   console.log(blockchain);
-  res.send('Hello');
+  res.send('This Page Is Coming Soon');
 });
 
 
@@ -71,5 +71,6 @@ function savePatient(req) {
   savedPatient.save(function (err, res) {
     if (err) throw "ERROR";
     console.log("SAVED\n" + savedPatient);
+    req.session.patientUserName = savedPatient.userName;
   });
 }
